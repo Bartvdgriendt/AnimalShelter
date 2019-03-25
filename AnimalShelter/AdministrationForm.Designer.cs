@@ -44,7 +44,6 @@
             this.nudLastWalkedMonth = new System.Windows.Forms.NumericUpDown();
             this.nudLastWalkedYear = new System.Windows.Forms.NumericUpDown();
             this.nudLastWalkedDay = new System.Windows.Forms.NumericUpDown();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMonth)).BeginInit();
@@ -225,21 +224,11 @@
             this.nudLastWalkedDay.TabIndex = 15;
             this.nudLastWalkedDay.Visible = false;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(40, 137);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // AdministrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 228);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.nudLastWalkedMonth);
             this.Controls.Add(this.nudLastWalkedYear);
             this.Controls.Add(this.nudLastWalkedDay);
@@ -288,7 +277,6 @@
         private System.Windows.Forms.NumericUpDown nudLastWalkedMonth;
         private System.Windows.Forms.NumericUpDown nudLastWalkedYear;
         private System.Windows.Forms.NumericUpDown nudLastWalkedDay;
-        private System.Windows.Forms.Button button1;
     }
 }
 
