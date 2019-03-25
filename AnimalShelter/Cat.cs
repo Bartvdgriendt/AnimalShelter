@@ -59,7 +59,5 @@ namespace AnimalShelter
                           + ", " + BadHabits;
             return info;
         }
-
-        //COMMENTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
     }
 }
