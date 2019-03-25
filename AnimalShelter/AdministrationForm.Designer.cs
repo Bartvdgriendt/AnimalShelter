@@ -48,6 +48,9 @@
             this.lbNotReserved = new System.Windows.Forms.ListBox();
             this.lReservedAnimals = new System.Windows.Forms.Label();
             this.lNotReserved = new System.Windows.Forms.Label();
+            this.bDelete = new System.Windows.Forms.Button();
+            this.bRelease = new System.Windows.Forms.Button();
+            this.bReserve = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMonth)).BeginInit();
@@ -235,6 +238,7 @@
             this.lbReserved.Name = "lbReserved";
             this.lbReserved.Size = new System.Drawing.Size(158, 160);
             this.lbReserved.TabIndex = 18;
+            this.lbReserved.Click += new System.EventHandler(this.lbReserved_Click);
             // 
             // lbNotReserved
             // 
@@ -243,6 +247,7 @@
             this.lbNotReserved.Name = "lbNotReserved";
             this.lbNotReserved.Size = new System.Drawing.Size(158, 160);
             this.lbNotReserved.TabIndex = 19;
+            this.lbNotReserved.Click += new System.EventHandler(this.lbNotReserved_Click);
             // 
             // lReservedAnimals
             // 
@@ -262,11 +267,42 @@
             this.lNotReserved.TabIndex = 21;
             this.lNotReserved.Text = "Reserverd animals";
             // 
+            // bDelete
+            // 
+            this.bDelete.Location = new System.Drawing.Point(461, 224);
+            this.bDelete.Name = "bDelete";
+            this.bDelete.Size = new System.Drawing.Size(160, 23);
+            this.bDelete.TabIndex = 22;
+            this.bDelete.Text = "Delete";
+            this.bDelete.UseVisualStyleBackColor = true;
+            this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
+            // 
+            // bRelease
+            // 
+            this.bRelease.Location = new System.Drawing.Point(380, 224);
+            this.bRelease.Name = "bRelease";
+            this.bRelease.Size = new System.Drawing.Size(75, 23);
+            this.bRelease.TabIndex = 23;
+            this.bRelease.Text = "Release";
+            this.bRelease.UseVisualStyleBackColor = true;
+            // 
+            // bReserve
+            // 
+            this.bReserve.Location = new System.Drawing.Point(627, 224);
+            this.bReserve.Name = "bReserve";
+            this.bReserve.Size = new System.Drawing.Size(75, 23);
+            this.bReserve.TabIndex = 24;
+            this.bReserve.Text = "Reserve";
+            this.bReserve.UseVisualStyleBackColor = true;
+            // 
             // AdministrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(714, 228);
+            this.ClientSize = new System.Drawing.Size(714, 263);
+            this.Controls.Add(this.bReserve);
+            this.Controls.Add(this.bRelease);
+            this.Controls.Add(this.bDelete);
             this.Controls.Add(this.lNotReserved);
             this.Controls.Add(this.lReservedAnimals);
             this.Controls.Add(this.lbNotReserved);
@@ -323,6 +359,9 @@
         private System.Windows.Forms.ListBox lbNotReserved;
         private System.Windows.Forms.Label lReservedAnimals;
         private System.Windows.Forms.Label lNotReserved;
+        private System.Windows.Forms.Button bDelete;
+        private System.Windows.Forms.Button bRelease;
+        private System.Windows.Forms.Button bReserve;
     }
 }
 

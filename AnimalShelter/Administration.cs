@@ -50,7 +50,10 @@ namespace AnimalShelter
                         }
                     }
                 }
-                return true;
+                if (listOfAnimals.Count() <= 0)
+                {
+                    return true;
+                }
             }
             return false;
         }

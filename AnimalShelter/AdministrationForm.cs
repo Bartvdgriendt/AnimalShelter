@@ -24,8 +24,10 @@ namespace AnimalShelter
             InitializeComponent();
             animalTypeComboBox.SelectedIndex = 0;
             Cat cat = new Cat(1, new SimpleDate(01, 01, 2019), "Cat", "Is alive");
+            Cat cat2 = new Cat(9, new SimpleDate(01, 01, 2019), "Cat", "Is alive");
             Dog dog = new Dog(2, new SimpleDate(01, 01, 2019), "Dog", new SimpleDate(01, 01, 2018));
             administration.Add(cat);
+            administration.Add(cat2);
             administration.Add(dog);
             updateListboxes();
         }
@@ -123,6 +125,45 @@ namespace AnimalShelter
             {
                 lbNotReserved.Items.Add(animal.ChipRegistrationNumber);
             }
+        }
+
+        private void lbReserved_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //lbNotReserved.SelectedIndex = -1;
+        }
+
+        private void lbNotReserved_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //lbReserved.SelectedIndex = -1;
+        }
+
+        private void lbReserved_Click(object sender, EventArgs e)
+        {
+                lbNotReserved.SelectedIndex = -1;            
+        }
+
+        private void lbNotReserved_Click(object sender, EventArgs e)
+        {
+                lbReserved.SelectedIndex = -1;            
+        }
+
+        private void bDelete_Click(object sender, EventArgs e)
+        {
+            if (lbReserved.SelectedIndex > -1)
+            {
+                int registrationNumber = Convert.ToInt32(lbReserved.SelectedItem);
+                administration.RemoveAnimal(registrationNumber);
+            }
+            else if (lbNotReserved.SelectedIndex > -1)
+            {
+                int registrationNumber = Convert.ToInt32(lbNotReserved.SelectedItem);
+                administration.RemoveAnimal(registrationNumber);
+            }
+            else
+            {
+                MessageBox.Show("You haven't selected anything.");
+            }
+            updateListboxes();
         }
     }
 }
