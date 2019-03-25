@@ -44,6 +44,10 @@
             this.nudLastWalkedMonth = new System.Windows.Forms.NumericUpDown();
             this.nudLastWalkedYear = new System.Windows.Forms.NumericUpDown();
             this.nudLastWalkedDay = new System.Windows.Forms.NumericUpDown();
+            this.lbReserved = new System.Windows.Forms.ListBox();
+            this.lbNotReserved = new System.Windows.Forms.ListBox();
+            this.lReservedAnimals = new System.Windows.Forms.Label();
+            this.lNotReserved = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMonth)).BeginInit();
@@ -134,7 +138,7 @@
             this.tbBadHabits.Location = new System.Drawing.Point(184, 117);
             this.tbBadHabits.Multiline = true;
             this.tbBadHabits.Name = "tbBadHabits";
-            this.tbBadHabits.Size = new System.Drawing.Size(179, 96);
+            this.tbBadHabits.Size = new System.Drawing.Size(179, 101);
             this.tbBadHabits.TabIndex = 10;
             // 
             // nudDay
@@ -224,11 +228,49 @@
             this.nudLastWalkedDay.TabIndex = 15;
             this.nudLastWalkedDay.Visible = false;
             // 
+            // lbReserved
+            // 
+            this.lbReserved.FormattingEnabled = true;
+            this.lbReserved.Location = new System.Drawing.Point(380, 58);
+            this.lbReserved.Name = "lbReserved";
+            this.lbReserved.Size = new System.Drawing.Size(158, 160);
+            this.lbReserved.TabIndex = 18;
+            // 
+            // lbNotReserved
+            // 
+            this.lbNotReserved.FormattingEnabled = true;
+            this.lbNotReserved.Location = new System.Drawing.Point(544, 58);
+            this.lbNotReserved.Name = "lbNotReserved";
+            this.lbNotReserved.Size = new System.Drawing.Size(158, 160);
+            this.lbNotReserved.TabIndex = 19;
+            // 
+            // lReservedAnimals
+            // 
+            this.lReservedAnimals.AutoSize = true;
+            this.lReservedAnimals.Location = new System.Drawing.Point(377, 42);
+            this.lReservedAnimals.Name = "lReservedAnimals";
+            this.lReservedAnimals.Size = new System.Drawing.Size(94, 13);
+            this.lReservedAnimals.TabIndex = 20;
+            this.lReservedAnimals.Text = "Reserverd animals";
+            // 
+            // lNotReserved
+            // 
+            this.lNotReserved.AutoSize = true;
+            this.lNotReserved.Location = new System.Drawing.Point(541, 42);
+            this.lNotReserved.Name = "lNotReserved";
+            this.lNotReserved.Size = new System.Drawing.Size(94, 13);
+            this.lNotReserved.TabIndex = 21;
+            this.lNotReserved.Text = "Reserverd animals";
+            // 
             // AdministrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 228);
+            this.ClientSize = new System.Drawing.Size(714, 228);
+            this.Controls.Add(this.lNotReserved);
+            this.Controls.Add(this.lReservedAnimals);
+            this.Controls.Add(this.lbNotReserved);
+            this.Controls.Add(this.lbReserved);
             this.Controls.Add(this.nudLastWalkedMonth);
             this.Controls.Add(this.nudLastWalkedYear);
             this.Controls.Add(this.nudLastWalkedDay);
@@ -277,6 +319,10 @@
         private System.Windows.Forms.NumericUpDown nudLastWalkedMonth;
         private System.Windows.Forms.NumericUpDown nudLastWalkedYear;
         private System.Windows.Forms.NumericUpDown nudLastWalkedDay;
+        private System.Windows.Forms.ListBox lbReserved;
+        private System.Windows.Forms.ListBox lbNotReserved;
+        private System.Windows.Forms.Label lReservedAnimals;
+        private System.Windows.Forms.Label lNotReserved;
     }
 }
 

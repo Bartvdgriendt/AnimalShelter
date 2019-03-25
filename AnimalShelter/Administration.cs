@@ -14,8 +14,7 @@ namespace AnimalShelter
     {
         List<Animal> listOfAnimals = new List<Animal>();
         public Administration()
-        {
-            
+        {            
         }
 
         public bool Add(Animal Animal)
@@ -70,6 +69,24 @@ namespace AnimalShelter
                 }
             }
             return null;
+        }
+
+        public Tuple<List<Animal>, List<Animal>> getReservedAnimals()
+        {
+            List<Animal> ReservedAnimal = new List<Animal>();
+            List<Animal> notReserverdAnimal = new List<Animal>();
+            foreach (Animal animal in listOfAnimals)
+            {
+                if (animal.IsReserved)
+                {
+                    ReservedAnimal.Add(animal);
+                }
+                else
+                {
+                    notReserverdAnimal.Add(animal);
+                }
+            }
+            return new Tuple<List<Animal>, List<Animal>>(ReservedAnimal, notReserverdAnimal);
         }
     }
 }

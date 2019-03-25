@@ -23,7 +23,7 @@ namespace AnimalShelter
         /// <param name="badHabits">The bad habbits of the cat (e.g. "scratches the couch")
         ///                         or null if none.</param>
         public Cat(int chipRegistrationNumber, SimpleDate dateOfBirth,
-                   string name, string badHabits)
+                   string name, string badHabits):base(chipRegistrationNumber, dateOfBirth, name)
         {
             BadHabits = badHabits;
         }

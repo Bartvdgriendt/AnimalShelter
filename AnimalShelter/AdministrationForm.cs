@@ -14,7 +14,7 @@ namespace AnimalShelter
         /// <summary>
         /// The (only) animal in this administration (for now....)
         /// </summary>
-        private Animal animal;
+        Administration administration = new Administration();
 
         /// <summary>
         /// Creates the form for doing adminstrative tasks
@@ -23,7 +23,11 @@ namespace AnimalShelter
         {
             InitializeComponent();
             animalTypeComboBox.SelectedIndex = 0;
-            animal = null;
+            Cat cat = new Cat(1, new SimpleDate(01, 01, 2019), "Cat", "Is alive");
+            Dog dog = new Dog(2, new SimpleDate(01, 01, 2019), "Dog", new SimpleDate(01, 01, 2018));
+            administration.Add(cat);
+            administration.Add(dog);
+            updateListboxes();
         }
 
         /// <summary>
@@ -48,14 +52,17 @@ namespace AnimalShelter
                 int lastWalkedMonth = Convert.ToInt32(nudLastWalkedMonth.Value);
                 int lastWalkedYear = Convert.ToInt32(nudLastWalkedYear.Value);
                 SimpleDate lastWalkedDate = new SimpleDate(lastWalkedDay, lastWalkedMonth, lastWalkedYear);
-                animal = new Dog(chipRegistrationNumber, dateOfBirth, name, lastWalkedDate);
+                Dog dog = new Dog(chipRegistrationNumber, dateOfBirth, name, lastWalkedDate);
+                administration.Add(dog);
             }
             else if (animalTypeComboBox.SelectedIndex == 0) 
             {
                 string badHabits = tbBadHabits.Text;
-                animal = new Cat(chipRegistrationNumber, dateOfBirth, name, badHabits);
+                Cat cat = new Cat(chipRegistrationNumber, dateOfBirth, name, badHabits);
+                administration.Add(cat);
             }
             clearForm();
+            updateListboxes();
         }
 
         /// <summary>
@@ -65,7 +72,7 @@ namespace AnimalShelter
         /// <param name="e"></param>
         private void showInfoButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(animal.ToString());            
+            //MessageBox.Show(animal.ToString());            
         }
 
         private void animalTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -99,6 +106,23 @@ namespace AnimalShelter
             nudLastWalkedMonth.Value = nudLastWalkedMonth.Minimum;
             nudLastWalkedYear.Value = nudLastWalkedYear.Minimum;
             tbBadHabits.Text = "";
+        }
+
+        private void updateListboxes()
+        {
+            lbReserved.Items.Clear();
+            lbNotReserved.Items.Clear();
+            List<Animal> reserverdAnimals = administration.getReservedAnimals().Item1;
+            List<Animal> notReserverdAnimals = administration.getReservedAnimals().Item2;
+
+            foreach (Animal animal in reserverdAnimals)
+            {
+                lbReserved.Items.Add(animal.ChipRegistrationNumber);
+            }
+            foreach (Animal animal in notReserverdAnimals)
+            {
+                lbNotReserved.Items.Add(animal.ChipRegistrationNumber);
+            }
         }
     }
 }
