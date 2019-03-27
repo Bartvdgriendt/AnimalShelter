@@ -51,6 +51,9 @@
             this.bDelete = new System.Windows.Forms.Button();
             this.bRelease = new System.Windows.Forms.Button();
             this.bReserve = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.bSearchByNumber = new System.Windows.Forms.Button();
+            this.tbSearchByNumber = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMonth)).BeginInit();
@@ -98,9 +101,9 @@
             this.lChipRegistrationNumber.AutoSize = true;
             this.lChipRegistrationNumber.Location = new System.Drawing.Point(12, 42);
             this.lChipRegistrationNumber.Name = "lChipRegistrationNumber";
-            this.lChipRegistrationNumber.Size = new System.Drawing.Size(122, 13);
+            this.lChipRegistrationNumber.Size = new System.Drawing.Size(120, 13);
             this.lChipRegistrationNumber.TabIndex = 3;
-            this.lChipRegistrationNumber.Text = "Chip registration nummer";
+            this.lChipRegistrationNumber.Text = "Chip registration number";
             // 
             // lName
             // 
@@ -263,9 +266,9 @@
             this.lNotReserved.AutoSize = true;
             this.lNotReserved.Location = new System.Drawing.Point(541, 42);
             this.lNotReserved.Name = "lNotReserved";
-            this.lNotReserved.Size = new System.Drawing.Size(94, 13);
+            this.lNotReserved.Size = new System.Drawing.Size(109, 13);
             this.lNotReserved.TabIndex = 21;
-            this.lNotReserved.Text = "Reserverd animals";
+            this.lNotReserved.Text = "Not reserverd animals";
             // 
             // bDelete
             // 
@@ -285,6 +288,7 @@
             this.bRelease.TabIndex = 23;
             this.bRelease.Text = "Release";
             this.bRelease.UseVisualStyleBackColor = true;
+            this.bRelease.Click += new System.EventHandler(this.bRelease_Click);
             // 
             // bReserve
             // 
@@ -294,12 +298,42 @@
             this.bReserve.TabIndex = 24;
             this.bReserve.Text = "Reserve";
             this.bReserve.UseVisualStyleBackColor = true;
+            this.bReserve.Click += new System.EventHandler(this.bReserve_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(377, 252);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(170, 13);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Search by chip registration number";
+            // 
+            // bSearchByNumber
+            // 
+            this.bSearchByNumber.Location = new System.Drawing.Point(380, 295);
+            this.bSearchByNumber.Name = "bSearchByNumber";
+            this.bSearchByNumber.Size = new System.Drawing.Size(322, 23);
+            this.bSearchByNumber.TabIndex = 27;
+            this.bSearchByNumber.Text = "Search";
+            this.bSearchByNumber.UseVisualStyleBackColor = true;
+            this.bSearchByNumber.Click += new System.EventHandler(this.bSearchByNumber_Click);
+            // 
+            // tbSearchByNumber
+            // 
+            this.tbSearchByNumber.Location = new System.Drawing.Point(380, 269);
+            this.tbSearchByNumber.Name = "tbSearchByNumber";
+            this.tbSearchByNumber.Size = new System.Drawing.Size(322, 20);
+            this.tbSearchByNumber.TabIndex = 28;
             // 
             // AdministrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(714, 263);
+            this.ClientSize = new System.Drawing.Size(714, 455);
+            this.Controls.Add(this.tbSearchByNumber);
+            this.Controls.Add(this.bSearchByNumber);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.bReserve);
             this.Controls.Add(this.bRelease);
             this.Controls.Add(this.bDelete);
@@ -325,6 +359,7 @@
             this.Controls.Add(this.animalTypeComboBox);
             this.Name = "AdministrationForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.AdministrationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudDay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudYear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMonth)).EndInit();
@@ -362,6 +397,9 @@
         private System.Windows.Forms.Button bDelete;
         private System.Windows.Forms.Button bRelease;
         private System.Windows.Forms.Button bReserve;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button bSearchByNumber;
+        private System.Windows.Forms.TextBox tbSearchByNumber;
     }
 }
 

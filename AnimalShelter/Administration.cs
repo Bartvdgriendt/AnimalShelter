@@ -19,6 +19,13 @@ namespace AnimalShelter
 
         public bool Add(Animal Animal)
         {
+            foreach(Animal animal in listOfAnimals)
+            {
+                if(animal.ChipRegistrationNumber == Animal.ChipRegistrationNumber)
+                {
+                    return false;
+                }
+            }
             listOfAnimals.Add(Animal);
 
             if (listOfAnimals.Contains(Animal))
@@ -32,26 +39,14 @@ namespace AnimalShelter
         }
 
         public bool RemoveAnimal(int chipRegistrationNumber)
-        {            
+        {
+
+
             foreach (Animal animal in listOfAnimals)
             {
                 if (animal.ChipRegistrationNumber == chipRegistrationNumber)
                 {
                     listOfAnimals.Remove(animal);
-                    foreach (Animal removedAnimal in listOfAnimals)
-                    {
-                        if (removedAnimal == animal)
-                        {
-                            return false;
-                        }
-                        else
-                        {
-                            return true;
-                        }
-                    }
-                }
-                if (listOfAnimals.Count() <= 0)
-                {
                     return true;
                 }
             }
@@ -65,10 +60,6 @@ namespace AnimalShelter
                 if (animal.ChipRegistrationNumber == chipRegistrationNumber)
                 {
                     return animal;
-                }
-                else
-                {
-                    return null;
                 }
             }
             return null;
@@ -91,5 +82,18 @@ namespace AnimalShelter
             }
             return new Tuple<List<Animal>, List<Animal>>(ReservedAnimal, notReserverdAnimal);
         }
+
+        public Animal ShowInfo(int chipnumber)
+        {
+            foreach  (Animal animal in listOfAnimals)
+            {
+                if(animal.ChipRegistrationNumber == chipnumber)
+                {
+                    return animal;
+                }
+            }
+            return null;
+        }
+
     }
 }

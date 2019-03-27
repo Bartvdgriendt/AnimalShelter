@@ -31,6 +31,10 @@ namespace AnimalShelter
             administration.Add(dog);
             updateListboxes();
         }
+        private void AdministrationForm_Load(object sender, EventArgs e)
+        {
+            lbNotReserved.SelectedIndex = 0;
+        }
 
         /// <summary>
         /// Create an Animal object and store it in the administration.
@@ -46,7 +50,7 @@ namespace AnimalShelter
             int dobMonth = Convert.ToInt32(nudMonth.Value);
             int dobYear = Convert.ToInt32(nudYear.Value);
             SimpleDate dateOfBirth = new SimpleDate(dobDay, dobMonth, dobYear);
-            string name = tbName.Text;            
+            string name = tbName.Text;
 
             if (animalTypeComboBox.SelectedIndex == 1)
             {
@@ -55,13 +59,20 @@ namespace AnimalShelter
                 int lastWalkedYear = Convert.ToInt32(nudLastWalkedYear.Value);
                 SimpleDate lastWalkedDate = new SimpleDate(lastWalkedDay, lastWalkedMonth, lastWalkedYear);
                 Dog dog = new Dog(chipRegistrationNumber, dateOfBirth, name, lastWalkedDate);
-                administration.Add(dog);
+                if (!administration.Add(dog))
+                {
+                    MessageBox.Show("Chip registration number is already used.");
+                }
             }
-            else if (animalTypeComboBox.SelectedIndex == 0) 
+            else if (animalTypeComboBox.SelectedIndex == 0)
             {
+
                 string badHabits = tbBadHabits.Text;
                 Cat cat = new Cat(chipRegistrationNumber, dateOfBirth, name, badHabits);
-                administration.Add(cat);
+                if (!administration.Add(cat))
+                {
+                    MessageBox.Show("Chip registration number is already used.");
+                }
             }
             clearForm();
             updateListboxes();
@@ -74,7 +85,22 @@ namespace AnimalShelter
         /// <param name="e"></param>
         private void showInfoButton_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(animal.ToString());            
+            if (lbNotReserved.SelectedIndex == -1 && lbReserved.SelectedIndex == -1)
+            {
+                MessageBox.Show("Select a(n) chip regstration number");
+            }
+            else if (lbNotReserved.SelectedIndex == -1)
+            {
+                int selectedchipnumber = Convert.ToInt16(lbReserved.SelectedItem);
+                MessageBox.Show(administration.ShowInfo(selectedchipnumber).ToString());
+            }
+            else
+            {
+
+                int selectedchipnumber = Convert.ToInt16(lbNotReserved.SelectedItem);
+                MessageBox.Show(administration.ShowInfo(selectedchipnumber).ToString());
+            }
+
         }
 
         private void animalTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -114,6 +140,7 @@ namespace AnimalShelter
         {
             lbReserved.Items.Clear();
             lbNotReserved.Items.Clear();
+            tbSearchByNumber.Text = " ";
             List<Animal> reserverdAnimals = administration.getReservedAnimals().Item1;
             List<Animal> notReserverdAnimals = administration.getReservedAnimals().Item2;
 
@@ -127,24 +154,16 @@ namespace AnimalShelter
             }
         }
 
-        private void lbReserved_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //lbNotReserved.SelectedIndex = -1;
-        }
 
-        private void lbNotReserved_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //lbReserved.SelectedIndex = -1;
-        }
 
         private void lbReserved_Click(object sender, EventArgs e)
         {
-                lbNotReserved.SelectedIndex = -1;            
+            lbNotReserved.SelectedIndex = -1;
         }
 
         private void lbNotReserved_Click(object sender, EventArgs e)
         {
-                lbReserved.SelectedIndex = -1;            
+            lbReserved.SelectedIndex = -1;
         }
 
         private void bDelete_Click(object sender, EventArgs e)
@@ -164,6 +183,55 @@ namespace AnimalShelter
                 MessageBox.Show("You haven't selected anything.");
             }
             updateListboxes();
+        }
+
+        private void bSearchByNumber_Click(object sender, EventArgs e)
+        {
+            int selectednumber = Convert.ToInt16(tbSearchByNumber.Text);
+            Animal selectedanimal = administration.FindAnimal(selectednumber);
+            if (selectedanimal == null)
+            {
+                MessageBox.Show("Animal not found.");
+                tbSearchByNumber.Text = "";
+            }
+            else if (selectedanimal.IsReserved)
+            {
+                lbReserved.SelectedItem = selectedanimal.ChipRegistrationNumber;
+            }
+            else
+            {
+                lbNotReserved.SelectedItem = selectedanimal.ChipRegistrationNumber;
+            }
+        }
+
+        private void bReserve_Click(object sender, EventArgs e)
+        {
+            int selectedanimal = Convert.ToInt16(lbNotReserved.SelectedItem);
+            if(selectedanimal <= 0)
+            {
+                MessageBox.Show("Selected a(n) animal to reserve");
+            }
+            else
+            {
+            Animal selectedAnimal = administration.FindAnimal(selectedanimal);
+            selectedAnimal.IsReserved = true;
+            updateListboxes();
+            }
+        }
+
+        private void bRelease_Click(object sender, EventArgs e)
+        {
+            int selectedanimal = Convert.ToInt16(lbReserved.SelectedItem);
+            if(selectedanimal <= 0)
+            {
+                MessageBox.Show("Selected a(n) animal to release");
+            }
+            else
+            {
+                Animal selectedAnimal = administration.FindAnimal(selectedanimal);
+                selectedAnimal.IsReserved = false;
+                updateListboxes();
+            }
         }
     }
 }
