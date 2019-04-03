@@ -197,10 +197,12 @@ namespace AnimalShelter
             else if (selectedanimal.IsReserved)
             {
                 lbReserved.SelectedItem = selectedanimal.ChipRegistrationNumber;
+                MessageBox.Show("Animal found and selected.");
             }
             else
             {
                 lbNotReserved.SelectedItem = selectedanimal.ChipRegistrationNumber;
+                MessageBox.Show("Animal founded and selected.");
             }
         }
 
