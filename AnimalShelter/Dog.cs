@@ -23,7 +23,7 @@ namespace AnimalShelter
         ///
 
         public Dog(int chipRegistrationNumber, SimpleDate dateOfBirth,
-                   string name, SimpleDate lastWalkDate):base(chipRegistrationNumber, dateOfBirth, name)
+                   string name, SimpleDate lastWalkDate) : base(chipRegistrationNumber, dateOfBirth, name)
         {
             LastWalkDate = lastWalkDate;
         }
@@ -40,6 +40,27 @@ namespace AnimalShelter
         ///          Where: IsReserved will be "reserved" if reserved or "not reserved" otherwise.
         ///                 LastWalkDate will be "unknown" if unknown or the date of the last doggywalk otherwise.
         /// </returns>
+
+
+        public override decimal price
+        {
+            get
+            {
+                if(ChipRegistrationNumber<50000)
+                {
+                    return 200;
+                }
+                else
+                {
+                    return 300;
+                }
+            }
+        }
+
+
+
+
+
         public override string ToString()
         {
             string IsReservedString;

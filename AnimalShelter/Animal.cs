@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AnimalShelter
+namespace AnimalShelter 
 {
     /// <summary>
     /// Class representing an animal in the shelter.
     /// </summary>
-    public class Animal
+    public class Animal : ISellable
     {
+
         /// <summary>
         /// Creates an animal.
         /// </summary>
@@ -47,6 +48,11 @@ namespace AnimalShelter
         public bool IsReserved { get; set; }
 
 
+        public virtual decimal price { get; set; }
+
+        
+      
+     
 
         /// <summary>
         /// Retrieve information about this animal

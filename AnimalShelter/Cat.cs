@@ -23,10 +23,35 @@ namespace AnimalShelter
         /// <param name="badHabits">The bad habbits of the cat (e.g. "scratches the couch")
         ///                         or null if none.</param>
         public Cat(int chipRegistrationNumber, SimpleDate dateOfBirth,
-                   string name, string badHabits):base(chipRegistrationNumber, dateOfBirth, name)
+                   string name, string badHabits) : base(chipRegistrationNumber, dateOfBirth, name)
         {
             BadHabits = badHabits;
         }
+
+        public override decimal price
+        {
+            get
+            {
+                int calPrice = 60;
+
+                calPrice = calPrice - BadHabits.Length;
+
+                if(calPrice <20)
+                {
+                    return 20;
+                }
+                else
+                {
+                    return calPrice;
+                }
+            }
+
+        }
+
+        
+
+
+
 
         /// <summary>
         /// Retrieve information about this cat

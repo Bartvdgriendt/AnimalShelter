@@ -54,6 +54,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.bSearchByNumber = new System.Windows.Forms.Button();
             this.tbSearchByNumber = new System.Windows.Forms.TextBox();
+            this.bCheckPrice = new System.Windows.Forms.Button();
+            this.tbCheckPrice = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMonth)).BeginInit();
@@ -326,11 +329,40 @@
             this.tbSearchByNumber.Size = new System.Drawing.Size(322, 20);
             this.tbSearchByNumber.TabIndex = 28;
             // 
+            // bCheckPrice
+            // 
+            this.bCheckPrice.Location = new System.Drawing.Point(15, 381);
+            this.bCheckPrice.Name = "bCheckPrice";
+            this.bCheckPrice.Size = new System.Drawing.Size(146, 23);
+            this.bCheckPrice.TabIndex = 29;
+            this.bCheckPrice.Text = "Check price";
+            this.bCheckPrice.UseVisualStyleBackColor = true;
+            this.bCheckPrice.Click += new System.EventHandler(this.bCheckPrice_Click);
+            // 
+            // tbCheckPrice
+            // 
+            this.tbCheckPrice.Location = new System.Drawing.Point(15, 355);
+            this.tbCheckPrice.Name = "tbCheckPrice";
+            this.tbCheckPrice.Size = new System.Drawing.Size(146, 20);
+            this.tbCheckPrice.TabIndex = 30;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 336);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(149, 13);
+            this.label2.TabIndex = 31;
+            this.label2.Text = "Enter Animal Id to check price";
+            // 
             // AdministrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(714, 455);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.tbCheckPrice);
+            this.Controls.Add(this.bCheckPrice);
             this.Controls.Add(this.tbSearchByNumber);
             this.Controls.Add(this.bSearchByNumber);
             this.Controls.Add(this.label1);
@@ -400,6 +432,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button bSearchByNumber;
         private System.Windows.Forms.TextBox tbSearchByNumber;
+        private System.Windows.Forms.Button bCheckPrice;
+        private System.Windows.Forms.TextBox tbCheckPrice;
+        private System.Windows.Forms.Label label2;
     }
 }
 

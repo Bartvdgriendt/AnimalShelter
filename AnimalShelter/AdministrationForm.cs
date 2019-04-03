@@ -24,7 +24,7 @@ namespace AnimalShelter
             InitializeComponent();
             animalTypeComboBox.SelectedIndex = 0;
             Cat cat = new Cat(1, new SimpleDate(01, 01, 2019), "Cat", "Is alive");
-            Cat cat2 = new Cat(9, new SimpleDate(01, 01, 2019), "Cat", "Is alive");
+            Cat cat2 = new Cat(9, new SimpleDate(01, 01, 2019), "Cat", "Is dead");
             Dog dog = new Dog(2, new SimpleDate(01, 01, 2019), "Dog", new SimpleDate(01, 01, 2018));
             administration.Add(cat);
             administration.Add(cat2);
@@ -234,6 +234,34 @@ namespace AnimalShelter
                 selectedAnimal.IsReserved = false;
                 updateListboxes();
             }
+        }
+
+        private void bCheckPrice_Click(object sender, EventArgs e)
+        {
+            int animalId = Convert.ToInt16(tbCheckPrice.Text);
+            Animal chosenAnimal = administration.FindAnimal(animalId);
+            if(chosenAnimal.IsReserved == true)
+            {
+                lbNotReserved.SelectedIndex = -1;
+                lbReserved.SelectedItem = chosenAnimal.ChipRegistrationNumber;
+                MessageBox.Show(Convert.ToString(chosenAnimal.price));
+                tbCheckPrice.Text = "";
+            }
+            else
+            {
+                lbReserved.SelectedIndex = -1;
+                lbNotReserved.SelectedItem = chosenAnimal.ChipRegistrationNumber;
+                MessageBox.Show(Convert.ToString(chosenAnimal.price));
+                tbCheckPrice.Text = "";
+            }
+            
+
+           
+
+            
+
+            
+            
         }
     }
 }
