@@ -52,7 +52,7 @@ namespace AnimalShelter
                 }
                 else
                 {
-                    return 300;
+                    return 350;
                 }
             }
         }

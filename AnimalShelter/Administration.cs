@@ -13,15 +13,18 @@ namespace AnimalShelter
     class Administration
     {
         List<Animal> listOfAnimals = new List<Animal>();
+      
+        
         public Administration()
-        {            
+        {
+            
         }
 
         public bool Add(Animal Animal)
         {
-            foreach(Animal animal in listOfAnimals)
+            foreach (Animal animal in listOfAnimals)
             {
-                if(animal.ChipRegistrationNumber == Animal.ChipRegistrationNumber)
+                if (animal.ChipRegistrationNumber == Animal.ChipRegistrationNumber)
                 {
                     return false;
                 }
@@ -35,7 +38,7 @@ namespace AnimalShelter
             else
             {
                 return false;
-            }          
+            }
         }
 
         public bool RemoveAnimal(int chipRegistrationNumber)
@@ -69,6 +72,8 @@ namespace AnimalShelter
         {
             List<Animal> ReservedAnimal = new List<Animal>();
             List<Animal> notReserverdAnimal = new List<Animal>();
+            
+
             foreach (Animal animal in listOfAnimals)
             {
                 if (animal.IsReserved)
@@ -85,15 +90,40 @@ namespace AnimalShelter
 
         public Animal ShowInfo(int chipnumber)
         {
-            foreach  (Animal animal in listOfAnimals)
+            foreach (Animal animal in listOfAnimals)
             {
-                if(animal.ChipRegistrationNumber == chipnumber)
+                if (animal.ChipRegistrationNumber == chipnumber)
                 {
                     return animal;
                 }
             }
             return null;
         }
-
     }
+
+    class Compare : IComparer<Animal>
+    {
+        int IComparer<Animal>.Compare(Animal x, Animal y)
+        {
+            if (x.ChipRegistrationNumber > y.ChipRegistrationNumber)
+            {
+                return 1;
+            }
+            else if(x.ChipRegistrationNumber == y.ChipRegistrationNumber)
+            {
+                return 0;
+            }
+            else if (x.ChipRegistrationNumber < y.ChipRegistrationNumber)
+            {
+                return -1;
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+        }
+    }
+
+
+
 }
