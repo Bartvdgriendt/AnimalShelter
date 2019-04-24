@@ -10,9 +10,9 @@ using System.Text;
 
 namespace AnimalShelter
 {
-    class Administration
+    public class Administration
     {
-        List<Animal> listOfAnimals = new List<Animal>();
+        public List<Animal> listOfAnimals = new List<Animal>();
       
         
         public Administration()
