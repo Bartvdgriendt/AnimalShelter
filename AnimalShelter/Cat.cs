@@ -36,7 +36,7 @@ namespace AnimalShelter
 
                 calPrice = calPrice - BadHabits.Length;
 
-                if(calPrice <20)
+                if (calPrice < 20) 
                 {
                     return 20;
                 }
@@ -47,12 +47,7 @@ namespace AnimalShelter
             }
 
         }
-
         
-
-
-
-
         /// <summary>
         /// Retrieve information about this cat
         /// 

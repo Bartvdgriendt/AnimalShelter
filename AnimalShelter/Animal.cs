@@ -10,7 +10,6 @@ namespace AnimalShelter
     /// </summary>
     public class Animal : ISellable
     {
-
         /// <summary>
         /// Creates an animal.
         /// </summary>
@@ -25,8 +24,6 @@ namespace AnimalShelter
             Name = name;
             IsReserved = false;
         }
-
-
 
         /// <summary>
         /// The chipnumber of the animal. Must be unique. Must be zero or greater than zero.
@@ -48,13 +45,8 @@ namespace AnimalShelter
         /// </summary>
         public bool IsReserved { get; set; }
 
-
         public virtual decimal price { get; set; }
-
         
-      
-     
-
         /// <summary>
         /// Retrieve information about this animal
         /// 

@@ -22,7 +22,6 @@ namespace AnimalShelter
         /// </summary>
         Administration administration = new Administration();
         Compare cp = new Compare();
-
         /// <summary>
         /// Creates the form for doing adminstrative tasks
         /// </summary>

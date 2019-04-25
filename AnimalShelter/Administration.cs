@@ -108,7 +108,7 @@ namespace AnimalShelter
                 }
                 else
                 {
-                    throw new ImportFileNotValidException("Import file is not valid and could not be loaded.");
+                    throw new ImportFileNotValidException("Import file is not valid and can not be loaded.");
                 }
             }             
         }

@@ -56,11 +56,7 @@ namespace AnimalShelter
                 }
             }
         }
-
-
-
-
-
+        
         public override string ToString()
         {
             string IsReservedString;
