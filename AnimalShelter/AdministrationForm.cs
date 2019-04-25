@@ -10,8 +10,8 @@ using System.IO;
 
 // Feedback:
 // Op genoeg plaatsen excepties opgevangen?
-// Waarom werkt het builden en het draaien van de solution alleen als bij CPU wordt gekozen voor x86?
 // Vragen:
+// Waarom werkt het builden en het draaien van de solution alleen als bij CPU wordt gekozen voor x86?
 
 namespace AnimalShelter
 {
@@ -22,19 +22,23 @@ namespace AnimalShelter
         /// </summary>
         Administration administration = new Administration();
         Compare cp = new Compare();
+
         /// <summary>
         /// Creates the form for doing adminstrative tasks
         /// </summary>
         public fAnimalshelter()
         {
             InitializeComponent();
+
             cbAnimalType.SelectedIndex = 0;
-            Cat cat = new Cat(1, new SimpleDate(01, 01, 2019), "Cat", "Is alive");
-            Cat cat2 = new Cat(9, new SimpleDate(01, 01, 2019), "Cat", "Is dead");
-            Dog dog = new Dog(2, new SimpleDate(01, 01, 2019), "Dog", new SimpleDate(01, 01, 2018));
-            administration.AddAnimal(cat);
-            administration.AddAnimal(cat2);
-            administration.AddAnimal(dog);
+
+            Cat exampleCat = new Cat(10000, new SimpleDate(26, 04, 2019), "ExampleCat", "None");
+            Cat exampleCat2 = new Cat(10001, new SimpleDate(03, 08, 2010), "ExampleCat2", "Aggressive");
+            Dog exampleDog = new Dog(10002, new SimpleDate(01, 01, 2014), "ExampleDog", new SimpleDate(26, 04, 2018));
+            administration.AddAnimal(exampleCat);
+            administration.AddAnimal(exampleCat2);
+            administration.AddAnimal(exampleDog);
+
             updateListboxes();
         }
 
@@ -52,7 +56,7 @@ namespace AnimalShelter
             int dobMonth = Convert.ToInt32(nudMonth.Value);
             int dobYear = Convert.ToInt32(nudYear.Value);
             SimpleDate dateOfBirth = new SimpleDate(dobDay, dobMonth, dobYear);
-            string name = tbName.Text;
+            string name = tbName.Text; //Checken voor invoeren
 
             if (cbAnimalType.SelectedIndex == 1)
             {
@@ -61,6 +65,7 @@ namespace AnimalShelter
                 int lastWalkedYear = Convert.ToInt32(nudLastWalkedYear.Value);
                 SimpleDate lastWalkedDate = new SimpleDate(lastWalkedDay, lastWalkedMonth, lastWalkedYear);
                 Dog dog = new Dog(chipRegistrationNumber, dateOfBirth, name, lastWalkedDate);
+
                 try
                 {
                     administration.AddAnimal(dog);
@@ -72,9 +77,9 @@ namespace AnimalShelter
             }
             else if (cbAnimalType.SelectedIndex == 0)
             {
-
-                string badHabits = tbBadHabits.Text;
+                string badHabits = tbBadHabits.Text; //Checken voor invoeren
                 Cat cat = new Cat(chipRegistrationNumber, dateOfBirth, name, badHabits);
+
                 try
                 {
                     administration.AddAnimal(cat);
@@ -95,20 +100,36 @@ namespace AnimalShelter
         /// <param name="e"></param>
         private void showInfoButton_Click(object sender, EventArgs e)
         {
-            if (lbNotReserved.SelectedIndex == -1 && lbReserved.SelectedIndex == -1)
-            {
-                MessageBox.Show("Select a(n) chip regstration number");
-            }
-            else if (lbNotReserved.SelectedIndex == -1)
+            // Onderstaande methode gebruiken om te controleren of er een dier is geselecteerd of gebruik maken van exceptions zoals het nu is gedaan?
+
+            //if (lbNotReserved.SelectedIndex == -1 && lbReserved.SelectedIndex == -1)
+            //{
+            //    MessageBox.Show("Select a(n) chip regstration number");
+            //}
+            //else 
+            if (lbNotReserved.SelectedIndex == -1)
             {
                 int selectedchipnumber = Convert.ToInt32(lbReserved.SelectedItem);
-                MessageBox.Show(administration.FindAnimal(selectedchipnumber).ToString());
+                try
+                {
+                    MessageBox.Show(administration.FindAnimal(selectedchipnumber).ToString());
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message);
+                }
             }
             else
             {
-
                 int selectedchipnumber = Convert.ToInt32(lbNotReserved.SelectedItem);
-                MessageBox.Show(administration.FindAnimal(selectedchipnumber).ToString());
+                try
+                {
+                    MessageBox.Show(administration.FindAnimal(selectedchipnumber).ToString());
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message);
+                }
             }
 
         }
@@ -118,59 +139,22 @@ namespace AnimalShelter
             if (cbAnimalType.SelectedIndex == 1)
             {
                 lBadHabitsOrLastWalkedDate.Text = "Last walked date";
+                bAddAnimal.Location=new Point(184,145);
                 nudLastWalkedDay.Visible = true;
                 nudLastWalkedMonth.Visible = true;
                 nudLastWalkedYear.Visible = true;
                 tbBadHabits.Visible = false;
-                bCreateAnimal.Location=new Point(184,145);
             }
             else if (cbAnimalType.SelectedIndex == 0)
             {
                 lBadHabitsOrLastWalkedDate.Text = "Bad habits";
+                bAddAnimal.Location =new Point(184, 220);
                 nudLastWalkedDay.Visible = false;
                 nudLastWalkedMonth.Visible = false;
                 nudLastWalkedYear.Visible = false;
                 tbBadHabits.Visible = true;
-                bCreateAnimal.Location =new Point(184, 220);
             }
         }
-
-        void clearForm()
-        {
-            nudChipRegistrationNumber.Value = nudChipRegistrationNumber.Minimum;
-            nudDay.Value = nudDay.Minimum;
-            nudMonth.Value = nudMonth.Minimum;
-            nudYear.Value = nudYear.Minimum;
-            tbName.Text = "";
-            nudLastWalkedDay.Value = nudLastWalkedDay.Minimum;
-            nudLastWalkedMonth.Value = nudLastWalkedMonth.Minimum;
-            nudLastWalkedYear.Value = nudLastWalkedYear.Minimum;
-            tbBadHabits.Text = "";
-        }
-
-        private void updateListboxes()
-        {
-            lbReserved.Items.Clear();
-            lbNotReserved.Items.Clear();
-            tbSearchByChipRegistrationNumber.Text = " ";
-            //Wat doet deze sort methode? 
-            //reserverdAnimals.Sort(cp);
-            //notReserverdAnimals.Sort(cp);
-
-            foreach (Animal animal in administration.listOfAnimals)
-            {
-                if (animal.IsReserved)
-                {
-                    lbReserved.Items.Add(animal.ChipRegistrationNumber);
-                }
-                else
-                {
-                    lbNotReserved.Items.Add(animal.ChipRegistrationNumber);
-                }
-            }
-        }
-
-
 
         private void lbReserved_Click(object sender, EventArgs e)
         {
@@ -195,7 +179,7 @@ namespace AnimalShelter
                 {
                     MessageBox.Show(exception.Message);   
                 }
-                
+                updateListboxes();
             }
             else if (lbNotReserved.SelectedIndex > -1)
             {
@@ -208,82 +192,98 @@ namespace AnimalShelter
                 {
                     MessageBox.Show(ex.Message);
                 }
+                updateListboxes();
             }
             else
             {
-                MessageBox.Show("You haven't selected anything.");
+                MessageBox.Show("You haven't selected an animal.");
             }
-            updateListboxes();
         }
 
         private void bSearchByNumber_Click(object sender, EventArgs e)
         {
-            int selectednumber = Convert.ToInt32(tbSearchByChipRegistrationNumber.Text);
-            Animal selectedanimal = administration.FindAnimal(selectednumber);
-            if (selectedanimal == null)
+            Animal animal = null;
+
+            int chipRegistrationNumber = Convert.ToInt32(tbSearchByChipRegistrationNumber.Text);
+            try
             {
-                MessageBox.Show("Animal not found.");
-                tbSearchByChipRegistrationNumber.Text = "";
+                animal = administration.FindAnimal(chipRegistrationNumber);
             }
-            else if (selectedanimal.IsReserved)
+            catch (Exception exception)
             {
-                lbReserved.SelectedItem = selectedanimal.ChipRegistrationNumber;
+                MessageBox.Show(exception.Message);
+            }
+
+            if (animal.IsReserved)
+            {
+                lbReserved.SelectedItem = animal.ChipRegistrationNumber;
                 MessageBox.Show("Animal found and selected.");
             }
             else
             {
-                lbNotReserved.SelectedItem = selectedanimal.ChipRegistrationNumber;
+                lbNotReserved.SelectedItem = animal.ChipRegistrationNumber;
                 MessageBox.Show("Animal founded and selected.");
             }
         }
 
         private void bReserve_Click(object sender, EventArgs e)
         {
-            int selectedanimal = Convert.ToInt32(lbNotReserved.SelectedItem);
-            if (selectedanimal <= 0)
+            int chipRegistrationNumber = Convert.ToInt32(lbNotReserved.SelectedItem);
+
+            try
             {
-                MessageBox.Show("Selected a(n) animal to reserve");
+                Animal animal = administration.FindAnimal(chipRegistrationNumber);
+                animal.IsReserved = true;
             }
-            else
+            catch (Exception exception)
             {
-                Animal selectedAnimal = administration.FindAnimal(selectedanimal);
-                selectedAnimal.IsReserved = true;
-                updateListboxes();
+                MessageBox.Show(exception.Message);
             }
+            updateListboxes();
         }
 
         private void bRelease_Click(object sender, EventArgs e)
         {
-            int selectedanimal = Convert.ToInt32(lbReserved.SelectedItem);
-            if (selectedanimal <= 0)
+            int chipRegistrationNumber = Convert.ToInt32(lbReserved.SelectedItem);
+
+            try
             {
-                MessageBox.Show("Selected a(n) animal to release");
+                Animal animal = administration.FindAnimal(chipRegistrationNumber);
+                animal.IsReserved = false;
             }
-            else
+            catch (Exception exception)
             {
-                Animal selectedAnimal = administration.FindAnimal(selectedanimal);
-                selectedAnimal.IsReserved = false;
-                updateListboxes();
+                MessageBox.Show(exception.Message);
             }
+            updateListboxes();
         }
 
         private void bCheckPrice_Click(object sender, EventArgs e)
         {
-            int animalId = Convert.ToInt32(nudCheckPriceByChipRegistrationNumber.Value);
-            Animal chosenAnimal = administration.FindAnimal(animalId);
-            if (chosenAnimal.IsReserved == true)
+            int chipRegistrationNumber = Convert.ToInt32(nudCheckPriceByChipRegistrationNumber.Value);
+            Animal animal = null;
+
+            try
+            {
+                animal = administration.FindAnimal(chipRegistrationNumber);
+                animal.IsReserved = false;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+
+            if (animal.IsReserved == true)
             {
                 lbNotReserved.SelectedIndex = -1;
-                lbReserved.SelectedItem = chosenAnimal.ChipRegistrationNumber;
-                MessageBox.Show(Convert.ToString(chosenAnimal.price));
-                nudCheckPriceByChipRegistrationNumber.Value = 100000;
+                lbReserved.SelectedItem = animal.ChipRegistrationNumber;
+                MessageBox.Show(Convert.ToString(string.Format("This animal costs {0} euro's.", animal.price)));
             }
             else
             {
                 lbReserved.SelectedIndex = -1;
-                lbNotReserved.SelectedItem = chosenAnimal.ChipRegistrationNumber;
-                MessageBox.Show(Convert.ToString(chosenAnimal.price));
-                nudCheckPriceByChipRegistrationNumber.Value = 100000;
+                lbNotReserved.SelectedItem = animal.ChipRegistrationNumber;
+                MessageBox.Show(Convert.ToString(string.Format("This animal costs {0} euro's.", animal.price)));
             }
         }
 
@@ -292,22 +292,85 @@ namespace AnimalShelter
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                File.WriteAllLines(saveFileDialog.FileName, administration.generateSaveFile());
+                try
+                {
+                    File.WriteAllLines(saveFileDialog.FileName, administration.generateSaveFile());
+                }
+                catch (DirectoryNotFoundException)
+                {
+                    MessageBox.Show("This path cannot be found. Make sure you enter a valid path.");
+                }
+                catch(PathTooLongException)
+                {
+                    MessageBox.Show("This path is too long. Please select an shorter path or rename your directory's to shorten your path.");
+                }
             }
         }
 
         private void bImport_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            string[] animalImportLines = null;
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                animalImportLines = File.ReadAllLines(openFileDialog.FileName);
+                try
+                {
+                    string[] animalImportLines = File.ReadAllLines(openFileDialog.FileName);
+                    administration.importSaveFile(animalImportLines);
+                }
+                catch (DirectoryNotFoundException)
+                {
+                    MessageBox.Show("This path cannot be found. Make sure you enter a valid path.");
+                }
+                catch (PathTooLongException)
+                {
+                    MessageBox.Show("This path is too long. Please select an shorter path or rename your directory's to shorten your path.");
+                }
+                catch (FileNotFoundException)
+                {
+                    MessageBox.Show("File not found. Make sure you select a valid file.");
+                }
             }
 
-            administration.importSaveFile(animalImportLines);
             updateListboxes();
+        }
+
+        void clearForm()
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control.GetType() == typeof(TextBox))
+                {
+                    control.Text = "";
+                }
+
+                if (control.GetType() == typeof(NumericUpDown))
+                {
+                    NumericUpDown numericUpDown = (NumericUpDown)control;
+                    numericUpDown.Value = numericUpDown.Minimum;
+                }
+            }
+        }
+
+        private void updateListboxes()
+        {
+            lbReserved.Items.Clear();
+            lbNotReserved.Items.Clear();
+            //Wat doet deze sort methode? 
+            //reserverdAnimals.Sort(cp);
+            //notReserverdAnimals.Sort(cp);
+
+            foreach (Animal animal in administration.listOfAnimals)
+            {
+                if (animal.IsReserved)
+                {
+                    lbReserved.Items.Add(animal.ChipRegistrationNumber);
+                }
+                else
+                {
+                    lbNotReserved.Items.Add(animal.ChipRegistrationNumber);
+                }
+            }
         }
     }
 }

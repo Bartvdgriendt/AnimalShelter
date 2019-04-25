@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.cbAnimalType = new System.Windows.Forms.ComboBox();
-            this.bCreateAnimal = new System.Windows.Forms.Button();
+            this.bAddAnimal = new System.Windows.Forms.Button();
             this.bShowInfo = new System.Windows.Forms.Button();
             this.lChipRegistrationNumber = new System.Windows.Forms.Label();
             this.lName = new System.Windows.Forms.Label();
@@ -82,15 +82,15 @@
             this.cbAnimalType.TabIndex = 0;
             this.cbAnimalType.SelectedIndexChanged += new System.EventHandler(this.animalTypeComboBox_SelectedIndexChanged);
             // 
-            // bCreateAnimal
+            // bAddAnimal
             // 
-            this.bCreateAnimal.Location = new System.Drawing.Point(184, 220);
-            this.bCreateAnimal.Name = "bCreateAnimal";
-            this.bCreateAnimal.Size = new System.Drawing.Size(179, 23);
-            this.bCreateAnimal.TabIndex = 1;
-            this.bCreateAnimal.Text = "Create";
-            this.bCreateAnimal.UseVisualStyleBackColor = true;
-            this.bCreateAnimal.Click += new System.EventHandler(this.createAnimalButton_Click);
+            this.bAddAnimal.Location = new System.Drawing.Point(184, 220);
+            this.bAddAnimal.Name = "bAddAnimal";
+            this.bAddAnimal.Size = new System.Drawing.Size(179, 23);
+            this.bAddAnimal.TabIndex = 1;
+            this.bAddAnimal.Text = "Add animal to shelter";
+            this.bAddAnimal.UseVisualStyleBackColor = true;
+            this.bAddAnimal.Click += new System.EventHandler(this.createAnimalButton_Click);
             // 
             // bShowInfo
             // 
@@ -161,9 +161,19 @@
             0,
             0,
             0});
+            this.nudDay.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudDay.Name = "nudDay";
             this.nudDay.Size = new System.Drawing.Size(48, 20);
             this.nudDay.TabIndex = 4;
+            this.nudDay.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // nudYear
             // 
@@ -195,9 +205,19 @@
             0,
             0,
             0});
+            this.nudMonth.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudMonth.Name = "nudMonth";
             this.nudMonth.Size = new System.Drawing.Size(46, 20);
             this.nudMonth.TabIndex = 5;
+            this.nudMonth.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // nudChipRegistrationNumber
             // 
@@ -229,9 +249,19 @@
             0,
             0,
             0});
+            this.nudLastWalkedMonth.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudLastWalkedMonth.Name = "nudLastWalkedMonth";
             this.nudLastWalkedMonth.Size = new System.Drawing.Size(46, 20);
             this.nudLastWalkedMonth.TabIndex = 9;
+            this.nudLastWalkedMonth.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudLastWalkedMonth.Visible = false;
             // 
             // nudLastWalkedYear
@@ -265,9 +295,19 @@
             0,
             0,
             0});
+            this.nudLastWalkedDay.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudLastWalkedDay.Name = "nudLastWalkedDay";
             this.nudLastWalkedDay.Size = new System.Drawing.Size(48, 20);
             this.nudLastWalkedDay.TabIndex = 8;
+            this.nudLastWalkedDay.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudLastWalkedDay.Visible = false;
             // 
             // lbReserved
@@ -457,7 +497,7 @@
             this.Controls.Add(this.lName);
             this.Controls.Add(this.lChipRegistrationNumber);
             this.Controls.Add(this.bShowInfo);
-            this.Controls.Add(this.bCreateAnimal);
+            this.Controls.Add(this.bAddAnimal);
             this.Controls.Add(this.cbAnimalType);
             this.Name = "fAnimalshelter";
             this.Text = "Animalshelter";
@@ -477,7 +517,7 @@
         #endregion
 
         private System.Windows.Forms.ComboBox cbAnimalType;
-        private System.Windows.Forms.Button bCreateAnimal;
+        private System.Windows.Forms.Button bAddAnimal;
         private System.Windows.Forms.Button bShowInfo;
         private System.Windows.Forms.Label lChipRegistrationNumber;
         private System.Windows.Forms.Label lName;

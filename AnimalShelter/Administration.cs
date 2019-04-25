@@ -33,15 +33,22 @@ namespace AnimalShelter
 
         public Animal FindAnimal(int chipRegistrationNumber)
         {
-            foreach (Animal animal in listOfAnimals)
+            if (chipRegistrationNumber == 0)
             {
-                if (animal.ChipRegistrationNumber == chipRegistrationNumber)
-                {
-                    return animal;
-                }
+                throw new NoAnimalSelectedException("You haven't selected an animal, please select one.");
             }
-            throw new NoAnimalFoundException(string.Format("We couldn't find a animal with chip registration number {0}. " +
-                "Are you sure you have entered a valid chip registration number?", chipRegistrationNumber));
+            else
+            {
+               foreach (Animal animal in listOfAnimals)
+               {
+                    if (animal.ChipRegistrationNumber == chipRegistrationNumber)
+                    {
+                        return animal;
+                    }
+               }
+                throw new NoAnimalFoundException(string.Format("We couldn't find a animal with chip registration number {0}. " +
+                    "Are you sure you have entered a valid chip registration number?", chipRegistrationNumber));
+            } 
         }
 
         public List<string> generateSaveFile()
@@ -124,6 +131,14 @@ namespace AnimalShelter
         public class NoAnimalFoundException : Exception
         {
             public NoAnimalFoundException(string message)
+               : base(message)
+            {
+            }
+        }
+
+        public class NoAnimalSelectedException : Exception
+        {
+            public NoAnimalSelectedException(string message)
                : base(message)
             {
             }
