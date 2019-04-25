@@ -111,27 +111,63 @@ namespace AnimalShelter
                 {
                     Cat cat = animal as Cat;
 
-                    animalLine = "|" + cat.ChipRegistrationNumber.ToString() + "|" +
+                    animalLine =        "Cat|"+
+                                        cat.ChipRegistrationNumber.ToString() + "|"+
                                         cat.DateOfBirth.ToString() + "|" +
                                         cat.Name.ToString() + "|" +
                                         cat.IsReserved.ToString() + "|" +
-                                        cat.BadHabits.ToString() + "|";
+                                        cat.BadHabits.ToString();
                     SaveFile.Add(animalLine);
                 }
                 else
                 {
                     Dog dog = animal as Dog;
 
-                    animalLine = "|" + dog.ChipRegistrationNumber.ToString() + "|" +
+                    animalLine =        "Dog|"+
+                                        dog.ChipRegistrationNumber.ToString() + "|"+
                                         dog.DateOfBirth.ToString() + "|" +
                                         dog.Name.ToString() + "|" +
                                         dog.IsReserved.ToString() + "|" +
-                                        dog.LastWalkDate.ToString() + "|";
+                                        dog.LastWalkDate.ToString();
                     SaveFile.Add(animalLine);
                 }
             }
 
             return SaveFile;
+        }
+
+        public bool importSaveFile(string[] lineArray)
+        {
+            foreach (string line in lineArray)
+            {
+                string[] animalProperties = line.Split('|');
+                if (animalProperties[0] == "Cat")
+                {
+                    string[] date = animalProperties[2].Split('-');
+                    int[] dateInt = Array.ConvertAll(date, int.Parse);
+                    SimpleDate simpleDate = new SimpleDate(dateInt[0], dateInt[1], dateInt[2]);
+                    Cat cat = new Cat(Convert.ToInt32(animalProperties[1]), simpleDate, animalProperties[3], animalProperties[4]);
+                    Add(cat);
+                }
+                else if (animalProperties[0] == "Dog")
+                {
+                    string[] date = animalProperties[2].Split('-');
+                    int[] dateInt = Array.ConvertAll(date, int.Parse);
+                    SimpleDate simpleDate = new SimpleDate(dateInt[0], dateInt[1], dateInt[2]);
+
+                    string[] lastWalkDate = animalProperties[2].Split('-');
+                    int[] lastWalkDateInt = Array.ConvertAll(lastWalkDate, int.Parse);
+                    SimpleDate simpleLastWalkDateInt = new SimpleDate(dateInt[0], dateInt[1], dateInt[2]);
+
+                    Dog dog = new Dog(Convert.ToInt32(animalProperties[1]), simpleDate, animalProperties[3], simpleLastWalkDateInt);
+                    Add(dog);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 

@@ -267,6 +267,20 @@ namespace AnimalShelter
             {
                 File.WriteAllLines(saveFileDialog.FileName, administration.generateSaveFile());
             }
-        }        
+        }
+
+        private void bImport_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            string[] animalImportLines = null;
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                animalImportLines = File.ReadAllLines(openFileDialog.FileName);
+            }
+
+            administration.importSaveFile(animalImportLines);
+            updateListboxes();
+        }
     }
 }

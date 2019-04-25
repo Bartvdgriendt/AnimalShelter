@@ -375,6 +375,7 @@
             this.bImport.TabIndex = 33;
             this.bImport.Text = "Import animals";
             this.bImport.UseVisualStyleBackColor = true;
+            this.bImport.Click += new System.EventHandler(this.bImport_Click);
             // 
             // AdministrationForm
             // 
