@@ -24,7 +24,14 @@ namespace AnimalShelter
         /// <param name="year">The year</param>
         public SimpleDate(int day, int month, int year)
         {
-            date = new DateTime(year, month, day);
+            try
+            {
+                date = new DateTime(year, month, day);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                throw new ArgumentOutOfRangeException("This is not a valid date.");
+            }
         }
 
         /// <summary>

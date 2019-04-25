@@ -87,7 +87,7 @@
             this.bAddAnimal.Location = new System.Drawing.Point(184, 220);
             this.bAddAnimal.Name = "bAddAnimal";
             this.bAddAnimal.Size = new System.Drawing.Size(179, 23);
-            this.bAddAnimal.TabIndex = 1;
+            this.bAddAnimal.TabIndex = 10;
             this.bAddAnimal.Text = "Add animal to shelter";
             this.bAddAnimal.UseVisualStyleBackColor = true;
             this.bAddAnimal.Click += new System.EventHandler(this.createAnimalButton_Click);
@@ -97,7 +97,7 @@
             this.bShowInfo.Location = new System.Drawing.Point(380, 12);
             this.bShowInfo.Name = "bShowInfo";
             this.bShowInfo.Size = new System.Drawing.Size(322, 23);
-            this.bShowInfo.TabIndex = 2;
+            this.bShowInfo.TabIndex = 13;
             this.bShowInfo.Text = "Show info";
             this.bShowInfo.UseVisualStyleBackColor = true;
             this.bShowInfo.Click += new System.EventHandler(this.showInfoButton_Click);
@@ -143,7 +143,7 @@
             this.tbName.Location = new System.Drawing.Point(184, 93);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(179, 20);
-            this.tbName.TabIndex = 7;
+            this.tbName.TabIndex = 5;
             // 
             // tbBadHabits
             // 
@@ -151,7 +151,7 @@
             this.tbBadHabits.Multiline = true;
             this.tbBadHabits.Name = "tbBadHabits";
             this.tbBadHabits.Size = new System.Drawing.Size(179, 95);
-            this.tbBadHabits.TabIndex = 11;
+            this.tbBadHabits.TabIndex = 9;
             // 
             // nudDay
             // 
@@ -168,7 +168,7 @@
             0});
             this.nudDay.Name = "nudDay";
             this.nudDay.Size = new System.Drawing.Size(48, 20);
-            this.nudDay.TabIndex = 4;
+            this.nudDay.TabIndex = 2;
             this.nudDay.Value = new decimal(new int[] {
             1,
             0,
@@ -190,7 +190,7 @@
             0});
             this.nudYear.Name = "nudYear";
             this.nudYear.Size = new System.Drawing.Size(73, 20);
-            this.nudYear.TabIndex = 6;
+            this.nudYear.TabIndex = 4;
             this.nudYear.Value = new decimal(new int[] {
             1980,
             0,
@@ -212,7 +212,7 @@
             0});
             this.nudMonth.Name = "nudMonth";
             this.nudMonth.Size = new System.Drawing.Size(46, 20);
-            this.nudMonth.TabIndex = 5;
+            this.nudMonth.TabIndex = 3;
             this.nudMonth.Value = new decimal(new int[] {
             1,
             0,
@@ -234,7 +234,7 @@
             0});
             this.nudChipRegistrationNumber.Name = "nudChipRegistrationNumber";
             this.nudChipRegistrationNumber.Size = new System.Drawing.Size(179, 20);
-            this.nudChipRegistrationNumber.TabIndex = 3;
+            this.nudChipRegistrationNumber.TabIndex = 1;
             this.nudChipRegistrationNumber.Value = new decimal(new int[] {
             10000,
             0,
@@ -256,7 +256,7 @@
             0});
             this.nudLastWalkedMonth.Name = "nudLastWalkedMonth";
             this.nudLastWalkedMonth.Size = new System.Drawing.Size(46, 20);
-            this.nudLastWalkedMonth.TabIndex = 9;
+            this.nudLastWalkedMonth.TabIndex = 7;
             this.nudLastWalkedMonth.Value = new decimal(new int[] {
             1,
             0,
@@ -279,7 +279,7 @@
             0});
             this.nudLastWalkedYear.Name = "nudLastWalkedYear";
             this.nudLastWalkedYear.Size = new System.Drawing.Size(73, 20);
-            this.nudLastWalkedYear.TabIndex = 10;
+            this.nudLastWalkedYear.TabIndex = 8;
             this.nudLastWalkedYear.Value = new decimal(new int[] {
             1980,
             0,
@@ -302,7 +302,7 @@
             0});
             this.nudLastWalkedDay.Name = "nudLastWalkedDay";
             this.nudLastWalkedDay.Size = new System.Drawing.Size(48, 20);
-            this.nudLastWalkedDay.TabIndex = 8;
+            this.nudLastWalkedDay.TabIndex = 6;
             this.nudLastWalkedDay.Value = new decimal(new int[] {
             1,
             0,
@@ -316,7 +316,7 @@
             this.lbReserved.Location = new System.Drawing.Point(380, 54);
             this.lbReserved.Name = "lbReserved";
             this.lbReserved.Size = new System.Drawing.Size(158, 134);
-            this.lbReserved.TabIndex = 18;
+            this.lbReserved.TabIndex = 14;
             this.lbReserved.Click += new System.EventHandler(this.lbReserved_Click);
             // 
             // lbNotReserved
@@ -325,7 +325,7 @@
             this.lbNotReserved.Location = new System.Drawing.Point(544, 54);
             this.lbNotReserved.Name = "lbNotReserved";
             this.lbNotReserved.Size = new System.Drawing.Size(158, 134);
-            this.lbNotReserved.TabIndex = 19;
+            this.lbNotReserved.TabIndex = 15;
             this.lbNotReserved.Click += new System.EventHandler(this.lbNotReserved_Click);
             // 
             // lReservedAnimals
@@ -351,7 +351,7 @@
             this.bDelete.Location = new System.Drawing.Point(461, 194);
             this.bDelete.Name = "bDelete";
             this.bDelete.Size = new System.Drawing.Size(160, 23);
-            this.bDelete.TabIndex = 22;
+            this.bDelete.TabIndex = 17;
             this.bDelete.Text = "Delete";
             this.bDelete.UseVisualStyleBackColor = true;
             this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
@@ -361,7 +361,7 @@
             this.bRelease.Location = new System.Drawing.Point(380, 194);
             this.bRelease.Name = "bRelease";
             this.bRelease.Size = new System.Drawing.Size(75, 23);
-            this.bRelease.TabIndex = 23;
+            this.bRelease.TabIndex = 16;
             this.bRelease.Text = "Release";
             this.bRelease.UseVisualStyleBackColor = true;
             this.bRelease.Click += new System.EventHandler(this.bRelease_Click);
@@ -371,7 +371,7 @@
             this.bReserve.Location = new System.Drawing.Point(627, 194);
             this.bReserve.Name = "bReserve";
             this.bReserve.Size = new System.Drawing.Size(75, 23);
-            this.bReserve.TabIndex = 24;
+            this.bReserve.TabIndex = 18;
             this.bReserve.Text = "Reserve";
             this.bReserve.UseVisualStyleBackColor = true;
             this.bReserve.Click += new System.EventHandler(this.bReserve_Click);
@@ -390,7 +390,7 @@
             this.bSearchByChipRegistrationNumber.Location = new System.Drawing.Point(380, 262);
             this.bSearchByChipRegistrationNumber.Name = "bSearchByChipRegistrationNumber";
             this.bSearchByChipRegistrationNumber.Size = new System.Drawing.Size(322, 23);
-            this.bSearchByChipRegistrationNumber.TabIndex = 27;
+            this.bSearchByChipRegistrationNumber.TabIndex = 20;
             this.bSearchByChipRegistrationNumber.Text = "Search";
             this.bSearchByChipRegistrationNumber.UseVisualStyleBackColor = true;
             this.bSearchByChipRegistrationNumber.Click += new System.EventHandler(this.bSearchByNumber_Click);
@@ -400,14 +400,14 @@
             this.tbSearchByChipRegistrationNumber.Location = new System.Drawing.Point(380, 236);
             this.tbSearchByChipRegistrationNumber.Name = "tbSearchByChipRegistrationNumber";
             this.tbSearchByChipRegistrationNumber.Size = new System.Drawing.Size(322, 20);
-            this.tbSearchByChipRegistrationNumber.TabIndex = 28;
+            this.tbSearchByChipRegistrationNumber.TabIndex = 19;
             // 
             // bCheckPrice
             // 
             this.bCheckPrice.Location = new System.Drawing.Point(15, 291);
             this.bCheckPrice.Name = "bCheckPrice";
             this.bCheckPrice.Size = new System.Drawing.Size(348, 23);
-            this.bCheckPrice.TabIndex = 29;
+            this.bCheckPrice.TabIndex = 12;
             this.bCheckPrice.Text = "Check price";
             this.bCheckPrice.UseVisualStyleBackColor = true;
             this.bCheckPrice.Click += new System.EventHandler(this.bCheckPrice_Click);
@@ -426,7 +426,7 @@
             this.bExportData.Location = new System.Drawing.Point(552, 291);
             this.bExportData.Name = "bExportData";
             this.bExportData.Size = new System.Drawing.Size(150, 23);
-            this.bExportData.TabIndex = 32;
+            this.bExportData.TabIndex = 22;
             this.bExportData.Text = "Export data";
             this.bExportData.UseVisualStyleBackColor = true;
             this.bExportData.Click += new System.EventHandler(this.bExport_Click);
@@ -436,7 +436,7 @@
             this.bImportData.Location = new System.Drawing.Point(380, 291);
             this.bImportData.Name = "bImportData";
             this.bImportData.Size = new System.Drawing.Size(150, 23);
-            this.bImportData.TabIndex = 33;
+            this.bImportData.TabIndex = 21;
             this.bImportData.Text = "Import data";
             this.bImportData.UseVisualStyleBackColor = true;
             this.bImportData.Click += new System.EventHandler(this.bImport_Click);
@@ -456,7 +456,7 @@
             0});
             this.nudCheckPriceByChipRegistrationNumber.Name = "nudCheckPriceByChipRegistrationNumber";
             this.nudCheckPriceByChipRegistrationNumber.Size = new System.Drawing.Size(348, 20);
-            this.nudCheckPriceByChipRegistrationNumber.TabIndex = 34;
+            this.nudCheckPriceByChipRegistrationNumber.TabIndex = 11;
             this.nudCheckPriceByChipRegistrationNumber.Value = new decimal(new int[] {
             10000,
             0,

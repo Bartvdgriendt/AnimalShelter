@@ -12,6 +12,12 @@ using System.IO;
 // Op genoeg plaatsen excepties opgevangen?
 // Vragen:
 // Waarom werkt het builden en het draaien van de solution alleen als bij CPU wordt gekozen voor x86?
+// To do: 
+// Commentaar verwerken bij add animal button
+// SimpleDate vervangen door dateTimePicker? Zo nee, bij alle SimpleDate klasses exceptions opvangen. 
+// Nalopen waar er nog excepties kunnen worden gebruikt.
+// Chipnumbers in listboxen aanvullen met naam? 
+// Automatisch chip registration number genereren wanneer deze niet handmatig is ingevoerd? 
 
 namespace AnimalShelter
 {
