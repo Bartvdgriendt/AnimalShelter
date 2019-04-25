@@ -99,6 +99,40 @@ namespace AnimalShelter
             }
             return null;
         }
+        public List<string> generateSaveFile()
+        {
+            List<string> SaveFile = new List<string>();
+
+            string animalLine;
+
+            foreach (Animal animal in listOfAnimals)
+            {
+                if (animal is Cat)
+                {
+                    Cat cat = animal as Cat;
+
+                    animalLine = "|" + cat.ChipRegistrationNumber.ToString() + "|" +
+                                        cat.DateOfBirth.ToString() + "|" +
+                                        cat.Name.ToString() + "|" +
+                                        cat.IsReserved.ToString() + "|" +
+                                        cat.BadHabits.ToString() + "|";
+                    SaveFile.Add(animalLine);
+                }
+                else
+                {
+                    Dog dog = animal as Dog;
+
+                    animalLine = "|" + dog.ChipRegistrationNumber.ToString() + "|" +
+                                        dog.DateOfBirth.ToString() + "|" +
+                                        dog.Name.ToString() + "|" +
+                                        dog.IsReserved.ToString() + "|" +
+                                        dog.LastWalkDate.ToString() + "|";
+                    SaveFile.Add(animalLine);
+                }
+            }
+
+            return SaveFile;
+        }
     }
 
     class Compare : IComparer<Animal>
@@ -123,6 +157,7 @@ namespace AnimalShelter
             }
         }
     }
+
 
 
 

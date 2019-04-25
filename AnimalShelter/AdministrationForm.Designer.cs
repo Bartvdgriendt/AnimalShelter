@@ -57,6 +57,8 @@
             this.bCheckPrice = new System.Windows.Forms.Button();
             this.tbCheckPrice = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.bExport = new System.Windows.Forms.Button();
+            this.bImport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMonth)).BeginInit();
@@ -355,11 +357,32 @@
             this.label2.TabIndex = 31;
             this.label2.Text = "Enter Animal Id to check price";
             // 
+            // bExport
+            // 
+            this.bExport.Location = new System.Drawing.Point(380, 353);
+            this.bExport.Name = "bExport";
+            this.bExport.Size = new System.Drawing.Size(322, 23);
+            this.bExport.TabIndex = 32;
+            this.bExport.Text = "Export animals";
+            this.bExport.UseVisualStyleBackColor = true;
+            this.bExport.Click += new System.EventHandler(this.bExport_Click);
+            // 
+            // bImport
+            // 
+            this.bImport.Location = new System.Drawing.Point(380, 381);
+            this.bImport.Name = "bImport";
+            this.bImport.Size = new System.Drawing.Size(322, 23);
+            this.bImport.TabIndex = 33;
+            this.bImport.Text = "Import animals";
+            this.bImport.UseVisualStyleBackColor = true;
+            // 
             // AdministrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(714, 455);
+            this.Controls.Add(this.bImport);
+            this.Controls.Add(this.bExport);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbCheckPrice);
             this.Controls.Add(this.bCheckPrice);
@@ -435,6 +458,8 @@
         private System.Windows.Forms.Button bCheckPrice;
         private System.Windows.Forms.TextBox tbCheckPrice;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button bExport;
+        private System.Windows.Forms.Button bImport;
     }
 }
 

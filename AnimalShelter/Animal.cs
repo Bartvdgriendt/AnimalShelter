@@ -27,6 +27,7 @@ namespace AnimalShelter
         }
 
 
+
         /// <summary>
         /// The chipnumber of the animal. Must be unique. Must be zero or greater than zero.
         /// </summary>
@@ -82,8 +83,6 @@ namespace AnimalShelter
                           + ", " + Name
                           + ", " + IsReservedString;
             return info;
-        }
-
-      
+        }      
     }
 }

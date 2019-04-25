@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace AnimalShelter
 {
@@ -257,14 +258,15 @@ namespace AnimalShelter
                 MessageBox.Show(Convert.ToString(chosenAnimal.price));
                 tbCheckPrice.Text = "";
             }
-
-
-
-
-
-
-
-
         }
+
+        private void bExport_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllLines(saveFileDialog.FileName, administration.generateSaveFile());
+            }
+        }        
     }
 }
