@@ -3,24 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-// FEEDBACK:
-// Lijst instantieren in constructor of daarboven?
-// Hoe checken of toevoegen aan lijst succesvol is?
-// Methode om animal te verwijderen en methode om animal te zoeken: returns onlogisch
-
 namespace AnimalShelter
 {
     public class Administration
     {
-        public List<Animal> listOfAnimals = new List<Animal>();
-      
+        public List<Animal> listOfAnimals = new List<Animal>();      
         
         public Administration()
-        {
-            
+        {                     
         }
 
-        public bool Add(Animal Animal)
+        public bool AddAnimal(Animal Animal)
         {
             foreach (Animal animal in listOfAnimals)
             {
@@ -147,7 +140,7 @@ namespace AnimalShelter
                     int[] dateInt = Array.ConvertAll(date, int.Parse);
                     SimpleDate simpleDate = new SimpleDate(dateInt[0], dateInt[1], dateInt[2]);
                     Cat cat = new Cat(Convert.ToInt32(animalProperties[1]), simpleDate, animalProperties[3], animalProperties[4]);
-                    Add(cat);
+                    AddAnimal(cat);
                 }
                 else if (animalProperties[0] == "Dog")
                 {
@@ -160,7 +153,7 @@ namespace AnimalShelter
                     SimpleDate simpleLastWalkDateInt = new SimpleDate(dateInt[0], dateInt[1], dateInt[2]);
 
                     Dog dog = new Dog(Convert.ToInt32(animalProperties[1]), simpleDate, animalProperties[3], simpleLastWalkDateInt);
-                    Add(dog);
+                    AddAnimal(dog);
                 }
                 else
                 {

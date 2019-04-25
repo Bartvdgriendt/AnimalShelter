@@ -8,6 +8,11 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 
+// Feedback:
+// Op genoeg plaatsen excepties opgevangen?
+// Waarom werkt het builden en het draaien van de solution alleen als bij CPU wordt gekozen voor x86?
+// Vragen:
+
 namespace AnimalShelter
 {
     public partial class fAnimalshelter : Form
@@ -28,9 +33,9 @@ namespace AnimalShelter
             Cat cat = new Cat(1, new SimpleDate(01, 01, 2019), "Cat", "Is alive");
             Cat cat2 = new Cat(9, new SimpleDate(01, 01, 2019), "Cat", "Is dead");
             Dog dog = new Dog(2, new SimpleDate(01, 01, 2019), "Dog", new SimpleDate(01, 01, 2018));
-            administration.Add(cat);
-            administration.Add(cat2);
-            administration.Add(dog);
+            administration.AddAnimal(cat);
+            administration.AddAnimal(cat2);
+            administration.AddAnimal(dog);
             updateListboxes();
         }
         private void AdministrationForm_Load(object sender, EventArgs e)
@@ -61,7 +66,7 @@ namespace AnimalShelter
                 int lastWalkedYear = Convert.ToInt32(nudLastWalkedYear.Value);
                 SimpleDate lastWalkedDate = new SimpleDate(lastWalkedDay, lastWalkedMonth, lastWalkedYear);
                 Dog dog = new Dog(chipRegistrationNumber, dateOfBirth, name, lastWalkedDate);
-                if (!administration.Add(dog))
+                if (!administration.AddAnimal(dog))
                 {
                     MessageBox.Show("Chip registration number is already used.");
                 }
@@ -71,7 +76,7 @@ namespace AnimalShelter
 
                 string badHabits = tbBadHabits.Text;
                 Cat cat = new Cat(chipRegistrationNumber, dateOfBirth, name, badHabits);
-                if (!administration.Add(cat))
+                if (!administration.AddAnimal(cat))
                 {
                     MessageBox.Show("Chip registration number is already used.");
                 }
@@ -114,6 +119,7 @@ namespace AnimalShelter
                 nudLastWalkedMonth.Visible = true;
                 nudLastWalkedYear.Visible = true;
                 tbBadHabits.Visible = false;
+                bCreateAnimal.Location=new Point(184,145);
             }
             else if (cbAnimalType.SelectedIndex == 0)
             {
@@ -122,6 +128,7 @@ namespace AnimalShelter
                 nudLastWalkedMonth.Visible = false;
                 nudLastWalkedYear.Visible = false;
                 tbBadHabits.Visible = true;
+                bCreateAnimal.Location =new Point(184, 220);
             }
         }
 

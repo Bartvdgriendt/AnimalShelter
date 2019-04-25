@@ -26,7 +26,7 @@ namespace Animal_Shelter_Test
             string name = "bobby";
 
             Dog dog1 = new Dog(chipRegistrationNumber, dateOfBirth, name, lastWalkedDate);
-            bool result = administration.Add(dog1);
+            bool result = administration.AddAnimal(dog1);
             int listcount = administration.listOfAnimals.Count;
 
             Assert.AreEqual(true, result);
@@ -53,7 +53,7 @@ namespace Animal_Shelter_Test
             {
             chipRegistrationNumber = i;
             Dog dog1 = new Dog(chipRegistrationNumber, dateOfBirth, name, lastWalkedDate);
-            administration.Add(dog1);
+            administration.AddAnimal(dog1);
             }
             int result = administration.listOfAnimals.Count;
 
@@ -81,7 +81,7 @@ namespace Animal_Shelter_Test
             {
                 chipRegistrationNumber = i;
                 Dog dog1 = new Dog(chipRegistrationNumber, dateOfBirth, name, lastWalkedDate);
-                administration.Add(dog1);
+                administration.AddAnimal(dog1);
             }
 
             chipRegistrationNumber = 3;
@@ -114,7 +114,7 @@ namespace Animal_Shelter_Test
             {
                 chipRegistrationNumber = i;
                 Dog dog1 = new Dog(chipRegistrationNumber, dateOfBirth, name, lastWalkedDate);
-                administration.Add(dog1);
+                administration.AddAnimal(dog1);
             }
 
             chipRegistrationNumber = 3;

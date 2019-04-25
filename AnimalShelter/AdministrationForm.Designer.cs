@@ -78,15 +78,15 @@
             "Dog"});
             this.cbAnimalType.Location = new System.Drawing.Point(12, 12);
             this.cbAnimalType.Name = "cbAnimalType";
-            this.cbAnimalType.Size = new System.Drawing.Size(166, 21);
+            this.cbAnimalType.Size = new System.Drawing.Size(351, 21);
             this.cbAnimalType.TabIndex = 0;
             this.cbAnimalType.SelectedIndexChanged += new System.EventHandler(this.animalTypeComboBox_SelectedIndexChanged);
             // 
             // bCreateAnimal
             // 
-            this.bCreateAnimal.Location = new System.Drawing.Point(184, 12);
+            this.bCreateAnimal.Location = new System.Drawing.Point(184, 220);
             this.bCreateAnimal.Name = "bCreateAnimal";
-            this.bCreateAnimal.Size = new System.Drawing.Size(86, 23);
+            this.bCreateAnimal.Size = new System.Drawing.Size(179, 23);
             this.bCreateAnimal.TabIndex = 1;
             this.bCreateAnimal.Text = "Create";
             this.bCreateAnimal.UseVisualStyleBackColor = true;
@@ -94,9 +94,9 @@
             // 
             // bShowInfo
             // 
-            this.bShowInfo.Location = new System.Drawing.Point(276, 12);
+            this.bShowInfo.Location = new System.Drawing.Point(380, 12);
             this.bShowInfo.Name = "bShowInfo";
-            this.bShowInfo.Size = new System.Drawing.Size(87, 23);
+            this.bShowInfo.Size = new System.Drawing.Size(322, 23);
             this.bShowInfo.TabIndex = 2;
             this.bShowInfo.Text = "Show info";
             this.bShowInfo.UseVisualStyleBackColor = true;
@@ -143,7 +143,7 @@
             this.tbName.Location = new System.Drawing.Point(184, 93);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(179, 20);
-            this.tbName.TabIndex = 9;
+            this.tbName.TabIndex = 7;
             // 
             // tbBadHabits
             // 
@@ -151,7 +151,7 @@
             this.tbBadHabits.Multiline = true;
             this.tbBadHabits.Name = "tbBadHabits";
             this.tbBadHabits.Size = new System.Drawing.Size(179, 95);
-            this.tbBadHabits.TabIndex = 10;
+            this.tbBadHabits.TabIndex = 11;
             // 
             // nudDay
             // 
@@ -163,7 +163,7 @@
             0});
             this.nudDay.Name = "nudDay";
             this.nudDay.Size = new System.Drawing.Size(48, 20);
-            this.nudDay.TabIndex = 11;
+            this.nudDay.TabIndex = 4;
             // 
             // nudYear
             // 
@@ -180,7 +180,7 @@
             0});
             this.nudYear.Name = "nudYear";
             this.nudYear.Size = new System.Drawing.Size(73, 20);
-            this.nudYear.TabIndex = 12;
+            this.nudYear.TabIndex = 6;
             this.nudYear.Value = new decimal(new int[] {
             1980,
             0,
@@ -197,7 +197,7 @@
             0});
             this.nudMonth.Name = "nudMonth";
             this.nudMonth.Size = new System.Drawing.Size(46, 20);
-            this.nudMonth.TabIndex = 13;
+            this.nudMonth.TabIndex = 5;
             // 
             // nudChipRegistrationNumber
             // 
@@ -214,7 +214,7 @@
             0});
             this.nudChipRegistrationNumber.Name = "nudChipRegistrationNumber";
             this.nudChipRegistrationNumber.Size = new System.Drawing.Size(179, 20);
-            this.nudChipRegistrationNumber.TabIndex = 14;
+            this.nudChipRegistrationNumber.TabIndex = 3;
             this.nudChipRegistrationNumber.Value = new decimal(new int[] {
             10000,
             0,
@@ -231,7 +231,7 @@
             0});
             this.nudLastWalkedMonth.Name = "nudLastWalkedMonth";
             this.nudLastWalkedMonth.Size = new System.Drawing.Size(46, 20);
-            this.nudLastWalkedMonth.TabIndex = 17;
+            this.nudLastWalkedMonth.TabIndex = 9;
             this.nudLastWalkedMonth.Visible = false;
             // 
             // nudLastWalkedYear
@@ -249,7 +249,7 @@
             0});
             this.nudLastWalkedYear.Name = "nudLastWalkedYear";
             this.nudLastWalkedYear.Size = new System.Drawing.Size(73, 20);
-            this.nudLastWalkedYear.TabIndex = 16;
+            this.nudLastWalkedYear.TabIndex = 10;
             this.nudLastWalkedYear.Value = new decimal(new int[] {
             1980,
             0,
@@ -267,31 +267,31 @@
             0});
             this.nudLastWalkedDay.Name = "nudLastWalkedDay";
             this.nudLastWalkedDay.Size = new System.Drawing.Size(48, 20);
-            this.nudLastWalkedDay.TabIndex = 15;
+            this.nudLastWalkedDay.TabIndex = 8;
             this.nudLastWalkedDay.Visible = false;
             // 
             // lbReserved
             // 
             this.lbReserved.FormattingEnabled = true;
-            this.lbReserved.Location = new System.Drawing.Point(380, 25);
+            this.lbReserved.Location = new System.Drawing.Point(380, 54);
             this.lbReserved.Name = "lbReserved";
-            this.lbReserved.Size = new System.Drawing.Size(158, 160);
+            this.lbReserved.Size = new System.Drawing.Size(158, 134);
             this.lbReserved.TabIndex = 18;
             this.lbReserved.Click += new System.EventHandler(this.lbReserved_Click);
             // 
             // lbNotReserved
             // 
             this.lbNotReserved.FormattingEnabled = true;
-            this.lbNotReserved.Location = new System.Drawing.Point(544, 25);
+            this.lbNotReserved.Location = new System.Drawing.Point(544, 54);
             this.lbNotReserved.Name = "lbNotReserved";
-            this.lbNotReserved.Size = new System.Drawing.Size(158, 160);
+            this.lbNotReserved.Size = new System.Drawing.Size(158, 134);
             this.lbNotReserved.TabIndex = 19;
             this.lbNotReserved.Click += new System.EventHandler(this.lbNotReserved_Click);
             // 
             // lReservedAnimals
             // 
             this.lReservedAnimals.AutoSize = true;
-            this.lReservedAnimals.Location = new System.Drawing.Point(377, 9);
+            this.lReservedAnimals.Location = new System.Drawing.Point(377, 38);
             this.lReservedAnimals.Name = "lReservedAnimals";
             this.lReservedAnimals.Size = new System.Drawing.Size(91, 13);
             this.lReservedAnimals.TabIndex = 20;
@@ -300,7 +300,7 @@
             // lNotReserved
             // 
             this.lNotReserved.AutoSize = true;
-            this.lNotReserved.Location = new System.Drawing.Point(541, 9);
+            this.lNotReserved.Location = new System.Drawing.Point(541, 38);
             this.lNotReserved.Name = "lNotReserved";
             this.lNotReserved.Size = new System.Drawing.Size(109, 13);
             this.lNotReserved.TabIndex = 21;
@@ -308,7 +308,7 @@
             // 
             // bDelete
             // 
-            this.bDelete.Location = new System.Drawing.Point(461, 191);
+            this.bDelete.Location = new System.Drawing.Point(461, 194);
             this.bDelete.Name = "bDelete";
             this.bDelete.Size = new System.Drawing.Size(160, 23);
             this.bDelete.TabIndex = 22;
@@ -318,7 +318,7 @@
             // 
             // bRelease
             // 
-            this.bRelease.Location = new System.Drawing.Point(380, 191);
+            this.bRelease.Location = new System.Drawing.Point(380, 194);
             this.bRelease.Name = "bRelease";
             this.bRelease.Size = new System.Drawing.Size(75, 23);
             this.bRelease.TabIndex = 23;
@@ -328,7 +328,7 @@
             // 
             // bReserve
             // 
-            this.bReserve.Location = new System.Drawing.Point(627, 191);
+            this.bReserve.Location = new System.Drawing.Point(627, 194);
             this.bReserve.Name = "bReserve";
             this.bReserve.Size = new System.Drawing.Size(75, 23);
             this.bReserve.TabIndex = 24;
@@ -339,7 +339,7 @@
             // lSearchByChipRegistrationNumber
             // 
             this.lSearchByChipRegistrationNumber.AutoSize = true;
-            this.lSearchByChipRegistrationNumber.Location = new System.Drawing.Point(377, 217);
+            this.lSearchByChipRegistrationNumber.Location = new System.Drawing.Point(377, 220);
             this.lSearchByChipRegistrationNumber.Name = "lSearchByChipRegistrationNumber";
             this.lSearchByChipRegistrationNumber.Size = new System.Drawing.Size(170, 13);
             this.lSearchByChipRegistrationNumber.TabIndex = 26;
@@ -347,7 +347,7 @@
             // 
             // bSearchByChipRegistrationNumber
             // 
-            this.bSearchByChipRegistrationNumber.Location = new System.Drawing.Point(380, 259);
+            this.bSearchByChipRegistrationNumber.Location = new System.Drawing.Point(380, 262);
             this.bSearchByChipRegistrationNumber.Name = "bSearchByChipRegistrationNumber";
             this.bSearchByChipRegistrationNumber.Size = new System.Drawing.Size(322, 23);
             this.bSearchByChipRegistrationNumber.TabIndex = 27;
@@ -357,16 +357,16 @@
             // 
             // tbSearchByChipRegistrationNumber
             // 
-            this.tbSearchByChipRegistrationNumber.Location = new System.Drawing.Point(380, 233);
+            this.tbSearchByChipRegistrationNumber.Location = new System.Drawing.Point(380, 236);
             this.tbSearchByChipRegistrationNumber.Name = "tbSearchByChipRegistrationNumber";
             this.tbSearchByChipRegistrationNumber.Size = new System.Drawing.Size(322, 20);
             this.tbSearchByChipRegistrationNumber.TabIndex = 28;
             // 
             // bCheckPrice
             // 
-            this.bCheckPrice.Location = new System.Drawing.Point(12, 259);
+            this.bCheckPrice.Location = new System.Drawing.Point(15, 291);
             this.bCheckPrice.Name = "bCheckPrice";
-            this.bCheckPrice.Size = new System.Drawing.Size(351, 23);
+            this.bCheckPrice.Size = new System.Drawing.Size(348, 23);
             this.bCheckPrice.TabIndex = 29;
             this.bCheckPrice.Text = "Check price";
             this.bCheckPrice.UseVisualStyleBackColor = true;
@@ -375,7 +375,7 @@
             // lCheckPriceWithChipRegistrationNumber
             // 
             this.lCheckPriceWithChipRegistrationNumber.AutoSize = true;
-            this.lCheckPriceWithChipRegistrationNumber.Location = new System.Drawing.Point(12, 217);
+            this.lCheckPriceWithChipRegistrationNumber.Location = new System.Drawing.Point(12, 249);
             this.lCheckPriceWithChipRegistrationNumber.Name = "lCheckPriceWithChipRegistrationNumber";
             this.lCheckPriceWithChipRegistrationNumber.Size = new System.Drawing.Size(218, 13);
             this.lCheckPriceWithChipRegistrationNumber.TabIndex = 31;
@@ -383,7 +383,7 @@
             // 
             // bExportData
             // 
-            this.bExportData.Location = new System.Drawing.Point(552, 288);
+            this.bExportData.Location = new System.Drawing.Point(552, 291);
             this.bExportData.Name = "bExportData";
             this.bExportData.Size = new System.Drawing.Size(150, 23);
             this.bExportData.TabIndex = 32;
@@ -393,7 +393,7 @@
             // 
             // bImportData
             // 
-            this.bImportData.Location = new System.Drawing.Point(380, 288);
+            this.bImportData.Location = new System.Drawing.Point(380, 291);
             this.bImportData.Name = "bImportData";
             this.bImportData.Size = new System.Drawing.Size(150, 23);
             this.bImportData.TabIndex = 33;
@@ -403,7 +403,7 @@
             // 
             // nudCheckPriceByChipRegistrationNumber
             // 
-            this.nudCheckPriceByChipRegistrationNumber.Location = new System.Drawing.Point(12, 234);
+            this.nudCheckPriceByChipRegistrationNumber.Location = new System.Drawing.Point(15, 265);
             this.nudCheckPriceByChipRegistrationNumber.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -415,7 +415,7 @@
             0,
             0});
             this.nudCheckPriceByChipRegistrationNumber.Name = "nudCheckPriceByChipRegistrationNumber";
-            this.nudCheckPriceByChipRegistrationNumber.Size = new System.Drawing.Size(351, 20);
+            this.nudCheckPriceByChipRegistrationNumber.Size = new System.Drawing.Size(348, 20);
             this.nudCheckPriceByChipRegistrationNumber.TabIndex = 34;
             this.nudCheckPriceByChipRegistrationNumber.Value = new decimal(new int[] {
             99999,
