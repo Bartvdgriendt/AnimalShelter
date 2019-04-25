@@ -10,7 +10,7 @@ using System.IO;
 
 namespace AnimalShelter
 {
-    public partial class AdministrationForm : Form
+    public partial class fAnimalshelter : Form
     {
         /// <summary>
         /// The (only) animal in this administration (for now....)
@@ -21,10 +21,10 @@ namespace AnimalShelter
         /// <summary>
         /// Creates the form for doing adminstrative tasks
         /// </summary>
-        public AdministrationForm()
+        public fAnimalshelter()
         {
             InitializeComponent();
-            animalTypeComboBox.SelectedIndex = 0;
+            cbAnimalType.SelectedIndex = 0;
             Cat cat = new Cat(1, new SimpleDate(01, 01, 2019), "Cat", "Is alive");
             Cat cat2 = new Cat(9, new SimpleDate(01, 01, 2019), "Cat", "Is dead");
             Dog dog = new Dog(2, new SimpleDate(01, 01, 2019), "Dog", new SimpleDate(01, 01, 2018));
@@ -54,7 +54,7 @@ namespace AnimalShelter
             SimpleDate dateOfBirth = new SimpleDate(dobDay, dobMonth, dobYear);
             string name = tbName.Text;
 
-            if (animalTypeComboBox.SelectedIndex == 1)
+            if (cbAnimalType.SelectedIndex == 1)
             {
                 int lastWalkedDay = Convert.ToInt32(nudLastWalkedDay.Value);
                 int lastWalkedMonth = Convert.ToInt32(nudLastWalkedMonth.Value);
@@ -66,7 +66,7 @@ namespace AnimalShelter
                     MessageBox.Show("Chip registration number is already used.");
                 }
             }
-            else if (animalTypeComboBox.SelectedIndex == 0)
+            else if (cbAnimalType.SelectedIndex == 0)
             {
 
                 string badHabits = tbBadHabits.Text;
@@ -107,7 +107,7 @@ namespace AnimalShelter
 
         private void animalTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (animalTypeComboBox.SelectedIndex == 1)
+            if (cbAnimalType.SelectedIndex == 1)
             {
                 lBadHabitsOrLastWalkedDate.Text = "Last walked date";
                 nudLastWalkedDay.Visible = true;
@@ -115,7 +115,7 @@ namespace AnimalShelter
                 nudLastWalkedYear.Visible = true;
                 tbBadHabits.Visible = false;
             }
-            else if (animalTypeComboBox.SelectedIndex == 0)
+            else if (cbAnimalType.SelectedIndex == 0)
             {
                 lBadHabitsOrLastWalkedDate.Text = "Bad habits";
                 nudLastWalkedDay.Visible = false;
@@ -142,7 +142,7 @@ namespace AnimalShelter
         {
             lbReserved.Items.Clear();
             lbNotReserved.Items.Clear();
-            tbSearchByNumber.Text = " ";
+            tbSearchByChipRegistrationNumber.Text = " ";
             List<Animal> reserverdAnimals = administration.getReservedAnimals().Item1;
             List<Animal> notReserverdAnimals = administration.getReservedAnimals().Item2;
             reserverdAnimals.Sort(cp);
@@ -191,12 +191,12 @@ namespace AnimalShelter
 
         private void bSearchByNumber_Click(object sender, EventArgs e)
         {
-            int selectednumber = Convert.ToInt32(tbSearchByNumber.Text);
+            int selectednumber = Convert.ToInt32(tbSearchByChipRegistrationNumber.Text);
             Animal selectedanimal = administration.FindAnimal(selectednumber);
             if (selectedanimal == null)
             {
                 MessageBox.Show("Animal not found.");
-                tbSearchByNumber.Text = "";
+                tbSearchByChipRegistrationNumber.Text = "";
             }
             else if (selectedanimal.IsReserved)
             {
@@ -242,21 +242,21 @@ namespace AnimalShelter
 
         private void bCheckPrice_Click(object sender, EventArgs e)
         {
-            int animalId = Convert.ToInt32(tbCheckPrice.Text);
+            int animalId = Convert.ToInt32(nudCheckPriceByChipRegistrationNumber.Value);
             Animal chosenAnimal = administration.FindAnimal(animalId);
             if (chosenAnimal.IsReserved == true)
             {
                 lbNotReserved.SelectedIndex = -1;
                 lbReserved.SelectedItem = chosenAnimal.ChipRegistrationNumber;
                 MessageBox.Show(Convert.ToString(chosenAnimal.price));
-                tbCheckPrice.Text = "";
+                nudCheckPriceByChipRegistrationNumber.Value = 100000;
             }
             else
             {
                 lbReserved.SelectedIndex = -1;
                 lbNotReserved.SelectedItem = chosenAnimal.ChipRegistrationNumber;
                 MessageBox.Show(Convert.ToString(chosenAnimal.price));
-                tbCheckPrice.Text = "";
+                nudCheckPriceByChipRegistrationNumber.Value = 100000;
             }
         }
 
