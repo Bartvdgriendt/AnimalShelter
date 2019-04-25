@@ -418,7 +418,7 @@
             this.nudCheckPriceByChipRegistrationNumber.Size = new System.Drawing.Size(348, 20);
             this.nudCheckPriceByChipRegistrationNumber.TabIndex = 34;
             this.nudCheckPriceByChipRegistrationNumber.Value = new decimal(new int[] {
-            99999,
+            10000,
             0,
             0,
             0});
@@ -461,7 +461,6 @@
             this.Controls.Add(this.cbAnimalType);
             this.Name = "fAnimalshelter";
             this.Text = "Animalshelter";
-            this.Load += new System.EventHandler(this.AdministrationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudDay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudYear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMonth)).EndInit();

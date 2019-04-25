@@ -13,40 +13,22 @@ namespace AnimalShelter
         {                     
         }
 
-        public bool AddAnimal(Animal Animal)
+        public void AddAnimal(Animal Animal)
         {
             foreach (Animal animal in listOfAnimals)
             {
                 if (animal.ChipRegistrationNumber == Animal.ChipRegistrationNumber)
                 {
-                    return false;
+                    throw new ChipRegistrationNumberAlreadyTakenException(string.Format("Chip registration number {0} is already taken. " +
+                        "Please select an other chip registration number.", animal.ChipRegistrationNumber));
                 }
             }
             listOfAnimals.Add(Animal);
-
-            if (listOfAnimals.Contains(Animal))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
-        public bool RemoveAnimal(int chipRegistrationNumber)
+        public void RemoveAnimal(int chipRegistrationNumber)
         {
-
-
-            foreach (Animal animal in listOfAnimals)
-            {
-                if (animal.ChipRegistrationNumber == chipRegistrationNumber)
-                {
-                    listOfAnimals.Remove(animal);
-                    return true;
-                }
-            }
-            return false;
+            listOfAnimals.Remove(FindAnimal(chipRegistrationNumber));
         }
 
         public Animal FindAnimal(int chipRegistrationNumber)
@@ -58,45 +40,14 @@ namespace AnimalShelter
                     return animal;
                 }
             }
-            return null;
+            throw new NoAnimalFoundException(string.Format("We couldn't find a animal with chip registration number {0}. " +
+                "Are you sure you have entered a valid chip registration number?", chipRegistrationNumber));
         }
 
-        public Tuple<List<Animal>, List<Animal>> getReservedAnimals()
-        {
-            List<Animal> ReservedAnimal = new List<Animal>();
-            List<Animal> notReserverdAnimal = new List<Animal>();
-            
-
-            foreach (Animal animal in listOfAnimals)
-            {
-                if (animal.IsReserved)
-                {
-                    ReservedAnimal.Add(animal);
-                }
-                else
-                {
-                    notReserverdAnimal.Add(animal);
-                }
-            }
-            return new Tuple<List<Animal>, List<Animal>>(ReservedAnimal, notReserverdAnimal);
-        }
-
-        public Animal ShowInfo(int chipnumber)
-        {
-            foreach (Animal animal in listOfAnimals)
-            {
-                if (animal.ChipRegistrationNumber == chipnumber)
-                {
-                    return animal;
-                }
-            }
-            return null;
-        }
         public List<string> generateSaveFile()
         {
             List<string> SaveFile = new List<string>();
-
-            string animalLine;
+            SaveFile.Add("Type|Chip registration number|Date of birth|Name|Is reserved|Bad habits/Last walk date");
 
             foreach (Animal animal in listOfAnimals)
             {
@@ -104,7 +55,7 @@ namespace AnimalShelter
                 {
                     Cat cat = animal as Cat;
 
-                    animalLine =        "Cat|"+
+                    string animalLine = "Cat|"+
                                         cat.ChipRegistrationNumber.ToString() + "|"+
                                         cat.DateOfBirth.ToString() + "|" +
                                         cat.Name.ToString() + "|" +
@@ -116,7 +67,7 @@ namespace AnimalShelter
                 {
                     Dog dog = animal as Dog;
 
-                    animalLine =        "Dog|"+
+                    string animalLine = "Dog|"+
                                         dog.ChipRegistrationNumber.ToString() + "|"+
                                         dog.DateOfBirth.ToString() + "|" +
                                         dog.Name.ToString() + "|" +
@@ -125,42 +76,65 @@ namespace AnimalShelter
                     SaveFile.Add(animalLine);
                 }
             }
-
             return SaveFile;
         }
 
-        public bool importSaveFile(string[] lineArray)
+        public void importSaveFile(string[] saveFile)
         {
-            foreach (string line in lineArray)
+            // simpleDate vervangen door dateTime indien we dat veranderen.
+            for (int i = 1; i < saveFile.Length; i++)
             {
-                string[] animalProperties = line.Split('|');
+                string[] animalProperties = saveFile[i].Split('|');
                 if (animalProperties[0] == "Cat")
                 {
                     string[] date = animalProperties[2].Split('-');
-                    int[] dateInt = Array.ConvertAll(date, int.Parse);
-                    SimpleDate simpleDate = new SimpleDate(dateInt[0], dateInt[1], dateInt[2]);
+                    int[] dateInIntes = Array.ConvertAll(date, int.Parse);
+                    SimpleDate simpleDate = new SimpleDate(dateInIntes[0], dateInIntes[1], dateInIntes[2]);
                     Cat cat = new Cat(Convert.ToInt32(animalProperties[1]), simpleDate, animalProperties[3], animalProperties[4]);
                     AddAnimal(cat);
                 }
                 else if (animalProperties[0] == "Dog")
                 {
                     string[] date = animalProperties[2].Split('-');
-                    int[] dateInt = Array.ConvertAll(date, int.Parse);
-                    SimpleDate simpleDate = new SimpleDate(dateInt[0], dateInt[1], dateInt[2]);
+                    int[] dateInInts = Array.ConvertAll(date, int.Parse);
+                    SimpleDate simpleDate = new SimpleDate(dateInInts[0], dateInInts[1], dateInInts[2]);
 
                     string[] lastWalkDate = animalProperties[2].Split('-');
-                    int[] lastWalkDateInt = Array.ConvertAll(lastWalkDate, int.Parse);
-                    SimpleDate simpleLastWalkDateInt = new SimpleDate(dateInt[0], dateInt[1], dateInt[2]);
+                    int[] lastWalkDateInInts = Array.ConvertAll(lastWalkDate, int.Parse);
+                    SimpleDate simpleLastWalkDateInt = new SimpleDate(lastWalkDateInInts[0], lastWalkDateInInts[1], lastWalkDateInInts[2]);
 
                     Dog dog = new Dog(Convert.ToInt32(animalProperties[1]), simpleDate, animalProperties[3], simpleLastWalkDateInt);
                     AddAnimal(dog);
                 }
                 else
                 {
-                    return false;
+                    throw new ImportFileNotValidException("Import file is not valid and could not be loaded.");
                 }
+            }             
+        }
+
+        public class ChipRegistrationNumberAlreadyTakenException : Exception
+        {
+            public ChipRegistrationNumberAlreadyTakenException(string message)
+               : base(message)
+            {
             }
-            return true;
+        }
+
+        public class NoAnimalFoundException : Exception
+        {
+            public NoAnimalFoundException(string message)
+               : base(message)
+            {
+            }
+        }
+
+        public class ImportFileNotValidException : Exception
+        {
+            public ImportFileNotValidException(string message)
+               : base(message)
+            {
+            }
         }
     }
 

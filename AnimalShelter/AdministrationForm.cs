@@ -38,10 +38,6 @@ namespace AnimalShelter
             administration.AddAnimal(dog);
             updateListboxes();
         }
-        private void AdministrationForm_Load(object sender, EventArgs e)
-        {
-            lbNotReserved.SelectedIndex = 0;
-        }
 
         /// <summary>
         /// Create an Animal object and store it in the administration.
@@ -66,9 +62,13 @@ namespace AnimalShelter
                 int lastWalkedYear = Convert.ToInt32(nudLastWalkedYear.Value);
                 SimpleDate lastWalkedDate = new SimpleDate(lastWalkedDay, lastWalkedMonth, lastWalkedYear);
                 Dog dog = new Dog(chipRegistrationNumber, dateOfBirth, name, lastWalkedDate);
-                if (!administration.AddAnimal(dog))
+                try
                 {
-                    MessageBox.Show("Chip registration number is already used.");
+                    administration.AddAnimal(dog);
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message);                    
                 }
             }
             else if (cbAnimalType.SelectedIndex == 0)
@@ -76,10 +76,14 @@ namespace AnimalShelter
 
                 string badHabits = tbBadHabits.Text;
                 Cat cat = new Cat(chipRegistrationNumber, dateOfBirth, name, badHabits);
-                if (!administration.AddAnimal(cat))
+                try
                 {
-                    MessageBox.Show("Chip registration number is already used.");
+                    administration.AddAnimal(cat);
                 }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message);
+                }                
             }
             clearForm();
             updateListboxes();
@@ -99,13 +103,13 @@ namespace AnimalShelter
             else if (lbNotReserved.SelectedIndex == -1)
             {
                 int selectedchipnumber = Convert.ToInt32(lbReserved.SelectedItem);
-                MessageBox.Show(administration.ShowInfo(selectedchipnumber).ToString());
+                MessageBox.Show(administration.FindAnimal(selectedchipnumber).ToString());
             }
             else
             {
 
                 int selectedchipnumber = Convert.ToInt32(lbNotReserved.SelectedItem);
-                MessageBox.Show(administration.ShowInfo(selectedchipnumber).ToString());
+                MessageBox.Show(administration.FindAnimal(selectedchipnumber).ToString());
             }
 
         }
@@ -150,18 +154,20 @@ namespace AnimalShelter
             lbReserved.Items.Clear();
             lbNotReserved.Items.Clear();
             tbSearchByChipRegistrationNumber.Text = " ";
-            List<Animal> reserverdAnimals = administration.getReservedAnimals().Item1;
-            List<Animal> notReserverdAnimals = administration.getReservedAnimals().Item2;
-            reserverdAnimals.Sort(cp);
-            notReserverdAnimals.Sort(cp);
+            //Wat doet deze sort methode? 
+            //reserverdAnimals.Sort(cp);
+            //notReserverdAnimals.Sort(cp);
 
-            foreach (Animal animal in reserverdAnimals)
+            foreach (Animal animal in administration.listOfAnimals)
             {
-                lbReserved.Items.Add(animal.ChipRegistrationNumber);
-            }
-            foreach (Animal animal in notReserverdAnimals)
-            {
-                lbNotReserved.Items.Add(animal.ChipRegistrationNumber);
+                if (animal.IsReserved)
+                {
+                    lbReserved.Items.Add(animal.ChipRegistrationNumber);
+                }
+                else
+                {
+                    lbNotReserved.Items.Add(animal.ChipRegistrationNumber);
+                }
             }
         }
 
@@ -182,12 +188,27 @@ namespace AnimalShelter
             if (lbReserved.SelectedIndex > -1)
             {
                 int registrationNumber = Convert.ToInt32(lbReserved.SelectedItem);
-                administration.RemoveAnimal(registrationNumber);
+                try
+                {
+                    administration.RemoveAnimal(registrationNumber);
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message);   
+                }
+                
             }
             else if (lbNotReserved.SelectedIndex > -1)
             {
                 int registrationNumber = Convert.ToInt32(lbNotReserved.SelectedItem);
-                administration.RemoveAnimal(registrationNumber);
+                try
+                {
+                    administration.RemoveAnimal(registrationNumber);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             else
             {
