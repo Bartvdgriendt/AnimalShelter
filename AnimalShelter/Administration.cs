@@ -97,8 +97,15 @@ namespace AnimalShelter
                     string[] date = animalProperties[2].Split('-');
                     int[] dateInIntes = Array.ConvertAll(date, int.Parse);
                     SimpleDate simpleDate = new SimpleDate(dateInIntes[0], dateInIntes[1], dateInIntes[2]);
-                    Cat cat = new Cat(Convert.ToInt32(animalProperties[1]), simpleDate, animalProperties[3], Convert.ToBoolean(animalProperties[4]),animalProperties[5]);
-                    AddAnimal(cat);
+                    try
+                    {
+                        Cat cat = new Cat(Convert.ToInt32(animalProperties[1]), simpleDate, animalProperties[3], Convert.ToBoolean(animalProperties[4]),animalProperties[5]);
+                        AddAnimal(cat);
+                    }
+                    catch(Exception exception)
+                    {
+                        throw exception;
+                    }
                 }
                 else if (animalProperties[0] == "Dog")
                 {
