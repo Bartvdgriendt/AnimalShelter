@@ -23,7 +23,7 @@ namespace AnimalShelter
         ///
 
         public Dog(int chipRegistrationNumber, SimpleDate dateOfBirth,
-                   string name, SimpleDate lastWalkDate) : base(chipRegistrationNumber, dateOfBirth, name)
+                   string name,bool reserved, SimpleDate lastWalkDate) : base(chipRegistrationNumber, dateOfBirth, name, reserved)
         {
             LastWalkDate = lastWalkDate;
         }

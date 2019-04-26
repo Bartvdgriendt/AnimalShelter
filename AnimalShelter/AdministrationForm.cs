@@ -12,14 +12,6 @@ using System.IO;
 // Op genoeg plaatsen excepties opgevangen?
 // Vragen:
 // Waarom werkt het builden en het draaien van de solution alleen als bij CPU wordt gekozen voor x86?
-// To do: 
-// Commentaar verwerken bij add animal button
-// SimpleDate vervangen door dateTimePicker? Zo nee, bij alle SimpleDate klasses exceptions opvangen. 
-// Nalopen waar er nog excepties kunnen worden gebruikt.
-// Chipnumbers in listboxen aanvullen met naam? 
-// Automatisch chip registration number genereren wanneer deze niet handmatig is ingevoerd? 
-// Bij opslaan exportfile automatisch naam genereren en filetype selecteren. 
-
 namespace AnimalShelter
 {
     public partial class fAnimalshelter : Form
@@ -39,9 +31,9 @@ namespace AnimalShelter
 
             cbAnimalType.SelectedIndex = 0;
 
-            Cat exampleCat = new Cat(10000, new SimpleDate(26, 04, 2019), "ExampleCat", "None");
-            Cat exampleCat2 = new Cat(10001, new SimpleDate(03, 08, 2010), "ExampleCat2", "Aggressive");
-            Dog exampleDog = new Dog(10002, new SimpleDate(01, 01, 2014), "ExampleDog", new SimpleDate(26, 04, 2018));
+            Cat exampleCat = new Cat(10000, new SimpleDate(26, 04, 2019), "ExampleCat",false, "None");
+            Cat exampleCat2 = new Cat(10001, new SimpleDate(03, 08, 2010), "ExampleCat2",false, "Aggressive");
+            Dog exampleDog = new Dog(10002, new SimpleDate(01, 01, 2014), "ExampleDog",false, new SimpleDate(26, 04, 2018));
             administration.AddAnimal(exampleCat);
             administration.AddAnimal(exampleCat2);
             administration.AddAnimal(exampleDog);
@@ -71,24 +63,26 @@ namespace AnimalShelter
                 int lastWalkedMonth = Convert.ToInt32(nudLastWalkedMonth.Value);
                 int lastWalkedYear = Convert.ToInt32(nudLastWalkedYear.Value);
                 SimpleDate lastWalkedDate = new SimpleDate(lastWalkedDay, lastWalkedMonth, lastWalkedYear);
-                Dog dog = new Dog(chipRegistrationNumber, dateOfBirth, name, lastWalkedDate);
-
+                Dog dog = null;
                 try
                 {
+                    dog = new Dog(chipRegistrationNumber, dateOfBirth, name,false, lastWalkedDate);
                     administration.AddAnimal(dog);
                 }
-                catch (Exception exception)
+                catch(Exception exception)
                 {
-                    MessageBox.Show(exception.Message);                    
+                    MessageBox.Show(exception.Message);
                 }
+             
             }
             else if (cbAnimalType.SelectedIndex == 0)
             {
                 string badHabits = tbBadHabits.Text; //Checken voor invoeren
-                Cat cat = new Cat(chipRegistrationNumber, dateOfBirth, name, badHabits);
+
 
                 try
                 {
+                    Cat cat = new Cat(chipRegistrationNumber, dateOfBirth, name, false,badHabits);
                     administration.AddAnimal(cat);
                 }
                 catch (Exception exception)
@@ -297,6 +291,8 @@ namespace AnimalShelter
         private void bExport_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.FileName = "Animals "+ DateTime.Now.ToString("dd/MM/yyyy");
+            saveFileDialog.Filter = "Text (*.txt)|*.txt";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 try
@@ -320,22 +316,25 @@ namespace AnimalShelter
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                try
+                if (Path.GetExtension(openFileDialog.FileName) == ".txt")
                 {
-                    string[] animalImportLines = File.ReadAllLines(openFileDialog.FileName);
-                    administration.importSaveFile(animalImportLines);
-                }
-                catch (DirectoryNotFoundException)
-                {
-                    MessageBox.Show("This path cannot be found. Make sure you enter a valid path.");
-                }
-                catch (PathTooLongException)
-                {
-                    MessageBox.Show("This path is too long. Please select an shorter path or rename your directory's to shorten your path.");
-                }
-                catch (FileNotFoundException)
-                {
-                    MessageBox.Show("File not found. Make sure you select a valid file.");
+                    try
+                    {
+                        string[] animalImportLines = File.ReadAllLines(openFileDialog.FileName);
+                        administration.importSaveFile(animalImportLines);
+                    }
+                    catch (DirectoryNotFoundException)
+                    {
+                        MessageBox.Show("This path cannot be found. Make sure you enter a valid path.");
+                    }
+                    catch (PathTooLongException)
+                    {
+                        MessageBox.Show("This path is too long. Please select an shorter path or rename your directory's to shorten your path.");
+                    }
+                    catch (FileNotFoundException)
+                    {
+                        MessageBox.Show("File not found. Make sure you select a valid file.");
+                    }
                 }
             }
 

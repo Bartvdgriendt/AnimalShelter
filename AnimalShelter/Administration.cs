@@ -97,7 +97,7 @@ namespace AnimalShelter
                     string[] date = animalProperties[2].Split('-');
                     int[] dateInIntes = Array.ConvertAll(date, int.Parse);
                     SimpleDate simpleDate = new SimpleDate(dateInIntes[0], dateInIntes[1], dateInIntes[2]);
-                    Cat cat = new Cat(Convert.ToInt32(animalProperties[1]), simpleDate, animalProperties[3], animalProperties[4]);
+                    Cat cat = new Cat(Convert.ToInt32(animalProperties[1]), simpleDate, animalProperties[3], Convert.ToBoolean(animalProperties[4]),animalProperties[5]);
                     AddAnimal(cat);
                 }
                 else if (animalProperties[0] == "Dog")
@@ -110,7 +110,7 @@ namespace AnimalShelter
                     int[] lastWalkDateInInts = Array.ConvertAll(lastWalkDate, int.Parse);
                     SimpleDate simpleLastWalkDateInt = new SimpleDate(lastWalkDateInInts[0], lastWalkDateInInts[1], lastWalkDateInInts[2]);
 
-                    Dog dog = new Dog(Convert.ToInt32(animalProperties[1]), simpleDate, animalProperties[3], simpleLastWalkDateInt);
+                    Dog dog = new Dog(Convert.ToInt32(animalProperties[1]), simpleDate, animalProperties[3],Convert.ToBoolean(animalProperties[4]), simpleLastWalkDateInt);
                     AddAnimal(dog);
                 }
                 else

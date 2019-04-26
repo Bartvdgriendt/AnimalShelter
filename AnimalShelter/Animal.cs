@@ -17,12 +17,16 @@ namespace AnimalShelter
         ///                                      Must be unique. Must be zero or greater than zero.</param>
         /// <param name="dateOfBirth">The date of birth of the animal.</param>
         /// <param name="name">The name of the animal.</param>
-        public Animal(int chipRegistrationNumber, SimpleDate dateOfBirth, string name)
+        public Animal(int chipRegistrationNumber, SimpleDate dateOfBirth, string name,bool Reserved)
         {
+            if(name == "")
+            {
+                throw new NoNameEnterdException("Please enter a(n) name");
+            }
             ChipRegistrationNumber = chipRegistrationNumber;
             DateOfBirth = dateOfBirth;
             Name = name;
-            IsReserved = false;
+            IsReserved = Reserved;
         }
 
         /// <summary>
@@ -75,6 +79,14 @@ namespace AnimalShelter
                           + ", " + Name
                           + ", " + IsReservedString;
             return info;
-        }      
+        }
+
+        public class NoNameEnterdException : Exception
+        {
+            public NoNameEnterdException(string message)
+               : base(message)
+            {
+            }
+        }
     }
 }
