@@ -31,9 +31,9 @@ namespace AnimalShelter
 
             cbAnimalType.SelectedIndex = 0;
 
-            Cat exampleCat = new Cat(10000, new SimpleDate(26, 04, 2019), "ExampleCat",false, "None");
-            Cat exampleCat2 = new Cat(10001, new SimpleDate(03, 08, 2010), "ExampleCat2",false, "Aggressive");
-            Dog exampleDog = new Dog(10002, new SimpleDate(01, 01, 2014), "ExampleDog",false, new SimpleDate(26, 04, 2018));
+            Cat exampleCat = new Cat(10000, new SimpleDate(26, 04, 2019), "ExampleCat", false, "None");
+            Cat exampleCat2 = new Cat(10001, new SimpleDate(03, 08, 2010), "ExampleCat2", false, "Aggressive");
+            Dog exampleDog = new Dog(10002, new SimpleDate(01, 01, 2014), "ExampleDog", false, new SimpleDate(26, 04, 2018));
             administration.AddAnimal(exampleCat);
             administration.AddAnimal(exampleCat2);
             administration.AddAnimal(exampleDog);
@@ -55,7 +55,7 @@ namespace AnimalShelter
             int dobMonth = Convert.ToInt32(nudMonth.Value);
             int dobYear = Convert.ToInt32(nudYear.Value);
             SimpleDate dateOfBirth = new SimpleDate(dobDay, dobMonth, dobYear);
-            string name = tbName.Text; //Checken voor invoeren
+            string name = tbName.Text;
 
             if (cbAnimalType.SelectedIndex == 1)
             {
@@ -66,29 +66,28 @@ namespace AnimalShelter
                 Dog dog = null;
                 try
                 {
-                    dog = new Dog(chipRegistrationNumber, dateOfBirth, name,false, lastWalkedDate);
+                    dog = new Dog(chipRegistrationNumber, dateOfBirth, name, false, lastWalkedDate);
                     administration.AddAnimal(dog);
                 }
-                catch(Exception exception)
+                catch (Exception exception)
                 {
                     MessageBox.Show(exception.Message);
                 }
-             
+
             }
             else if (cbAnimalType.SelectedIndex == 0)
             {
-                string badHabits = tbBadHabits.Text; //Checken voor invoeren
-
+                string badHabits = tbBadHabits.Text; 
 
                 try
                 {
-                    Cat cat = new Cat(chipRegistrationNumber, dateOfBirth, name, false,badHabits);
+                    Cat cat = new Cat(chipRegistrationNumber, dateOfBirth, name, false, badHabits);
                     administration.AddAnimal(cat);
                 }
                 catch (Exception exception)
                 {
                     MessageBox.Show(exception.Message);
-                }                
+                }
             }
             clearForm();
             updateListboxes();
@@ -133,7 +132,7 @@ namespace AnimalShelter
             if (cbAnimalType.SelectedIndex == 1)
             {
                 lBadHabitsOrLastWalkedDate.Text = "Last walked date";
-                bAddAnimal.Location=new Point(184,145);
+                bAddAnimal.Location = new Point(184, 145);
                 nudLastWalkedDay.Visible = true;
                 nudLastWalkedMonth.Visible = true;
                 nudLastWalkedYear.Visible = true;
@@ -142,7 +141,7 @@ namespace AnimalShelter
             else if (cbAnimalType.SelectedIndex == 0)
             {
                 lBadHabitsOrLastWalkedDate.Text = "Bad habits";
-                bAddAnimal.Location =new Point(184, 220);
+                bAddAnimal.Location = new Point(184, 220);
                 nudLastWalkedDay.Visible = false;
                 nudLastWalkedMonth.Visible = false;
                 nudLastWalkedYear.Visible = false;
@@ -171,7 +170,7 @@ namespace AnimalShelter
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show(exception.Message);   
+                    MessageBox.Show(exception.Message);
                 }
                 updateListboxes();
             }
@@ -284,7 +283,7 @@ namespace AnimalShelter
         private void bExport_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.FileName = "Animals "+ DateTime.Now.ToString("dd/MM/yyyy");
+            saveFileDialog.FileName = "Animals " + DateTime.Now.ToString("dd/MM/yyyy");
             saveFileDialog.Filter = "Text (*.txt)|*.txt";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -296,7 +295,7 @@ namespace AnimalShelter
                 {
                     MessageBox.Show("This path cannot be found. Make sure you enter a valid path.");
                 }
-                catch(PathTooLongException)
+                catch (PathTooLongException)
                 {
                     MessageBox.Show("This path is too long. Please select an shorter path or rename your directory's to shorten your path.");
                 }
@@ -328,7 +327,7 @@ namespace AnimalShelter
                     {
                         MessageBox.Show("File not found. Make sure you select a valid file.");
                     }
-                    catch(Exception exception)
+                    catch (Exception exception)
                     {
                         MessageBox.Show(exception.Message);
                     }
