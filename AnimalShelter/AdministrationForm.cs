@@ -335,6 +335,10 @@ namespace AnimalShelter
                     {
                         MessageBox.Show("File not found. Make sure you select a valid file.");
                     }
+                    catch(Exception exception)
+                    {
+                        MessageBox.Show(exception.Message);
+                    }
                 }
             }
 
