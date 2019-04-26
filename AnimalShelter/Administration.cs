@@ -53,8 +53,10 @@ namespace AnimalShelter
 
         public List<string> generateSaveFile()
         {
-            List<string> SaveFile = new List<string>();
-            SaveFile.Add("Type|Chip registration number|Date of birth|Name|Is reserved|Bad habits/Last walk date");
+            List<string> SaveFile = new List<string>
+            {
+                "Type|Chip registration number|Date of birth|Name|Is reserved|Bad habits/Last walk date"
+            };
 
             foreach (Animal animal in listOfAnimals)
             {

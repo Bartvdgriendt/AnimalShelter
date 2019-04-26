@@ -282,9 +282,11 @@ namespace AnimalShelter
 
         private void bExport_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.FileName = "Animals " + DateTime.Now.ToString("dd/MM/yyyy");
-            saveFileDialog.Filter = "Text (*.txt)|*.txt";
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                FileName = "Animals " + DateTime.Now.ToString("dd/MM/yyyy"),
+                Filter = "Text (*.txt)|*.txt"
+            };
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 try
