@@ -101,13 +101,6 @@ namespace AnimalShelter
         /// <param name="e"></param>
         private void showInfoButton_Click(object sender, EventArgs e)
         {
-            // Onderstaande methode gebruiken om te controleren of er een dier is geselecteerd of gebruik maken van exceptions zoals het nu is gedaan?
-
-            //if (lbNotReserved.SelectedIndex == -1 && lbReserved.SelectedIndex == -1)
-            //{
-            //    MessageBox.Show("Select a(n) chip regstration number");
-            //}
-            //else 
             if (lbNotReserved.SelectedIndex == -1)
             {
                 int selectedchipnumber = Convert.ToInt32(lbReserved.SelectedItem);
