@@ -18,6 +18,7 @@ using System.IO;
 // Nalopen waar er nog excepties kunnen worden gebruikt.
 // Chipnumbers in listboxen aanvullen met naam? 
 // Automatisch chip registration number genereren wanneer deze niet handmatig is ingevoerd? 
+// Bij opslaan exportfile automatisch naam genereren en filetype selecteren. 
 
 namespace AnimalShelter
 {
